@@ -19,7 +19,7 @@ struct GitsaweModel:  Codable,  Identifiable {
     var paul: String?
     var melkit: String?
     var gh: String?
-    var misbak1: [KeyValue]
-    var misbak2: [KeyValue]
-    var misbak3: [KeyValue]
+    var kidase: String?
+    var psalm: String? 
+    var misbak: [[KeyValue]]
 }

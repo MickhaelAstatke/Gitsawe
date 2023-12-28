@@ -11,23 +11,21 @@ import Foundation
 
 class Helper : ObservableObject{
     
-    @Published var model: [GitsaweModel];
+    @Published var model: GitsaweModel?;
+    @Published var id: String;
         
-    init() {
-        if let path = Bundle.main.path(forResource: "1", ofType: "json") {
+    init(id: String) {
+        if let path = Bundle.main.path(forResource: id, ofType: "json") {
             print("path \(path)")
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                print(data)
-                model = try JSONDecoder().decode([GitsaweModel].self, from: data);
-                print(model);
+                model = try JSONDecoder().decode(GitsaweModel.self, from: data);
             } catch {
-                model = [];//misbak: [KeyValue(t: "1")])
                 print(error.localizedDescription);
                 print("Unexpected error occured while loading json data")
             }
-        }else{
-            model = [];//misbak: [KeyValue(t: "1")])
         }
+        
+        self.id = id;
     }
 }

@@ -10,12 +10,9 @@ import SwiftUI
 @main
 struct GitsaweApp: App {
     
-    @StateObject var helper = Helper();
-    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(helper)
         }
     }
 }

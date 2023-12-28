@@ -9,24 +9,17 @@ import SwiftUI
 
 struct Misbak: View {
     
-    @EnvironmentObject private var helper: Helper
+    //@EnvironmentObject private var helper: Helper
+    
+    var misbak: [[KeyValue]];
     
     var body: some View {
         VStack(spacing: 5){
-            WrappingHStack(horizontalSpacing: 0){
-                ForEach(helper.model.first!.misbak1, id: \.self){l in
-                    Letter(letter: l.t, sign: l.s)
-                }
-            }
-            WrappingHStack(horizontalSpacing: 0){
-                ForEach(helper.model.first!.misbak2, id: \.self){l in
-                    Letter(letter: l.t, sign: l.s)
-                }
-            }
-            
-            WrappingHStack(horizontalSpacing: 0){
-                ForEach(helper.model.first!.misbak3, id: \.self){l in
-                    Letter(letter: l.t, sign: l.s)
+            ForEach(misbak, id: \.self){line in
+                WrappingHStack(horizontalSpacing: 0){
+                    ForEach(line, id: \.self){l in
+                        Letter(letter: l.t, sign: l.s)
+                    }
                 }
             }
         }
@@ -34,7 +27,7 @@ struct Misbak: View {
 }
 
 #Preview {
-    Misbak()
+    Misbak(misbak: [[KeyValue(t: "T", s: "^")]])
 }
 
 

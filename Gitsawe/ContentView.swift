@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject private var helper: Helper
-    
     
     var body: some View {
         VStack {
-            Misbak()
-                .environmentObject(helper)
+            Page()
         }
         .padding()
     }

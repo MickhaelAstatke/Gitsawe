@@ -9,6 +9,42 @@ import Foundation
 
 
 
+extension Formatter {
+    
+    static let greFullDay: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM dd, yyyy"
+        return formatter
+    }()
+    
+    
+    static let ethFullDay: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar.init(identifier: Calendar.Identifier.ethiopicAmeteMihret)
+        formatter.locale = Locale(identifier: "amh")
+        formatter.dateFormat = "MMMM dd, yyyy"
+        return formatter
+    }()
+    
+    
+    static let ethWeekDay: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "amh")
+        formatter.dateFormat = "cccc"
+        return formatter
+    }()
+}
+
+extension Date {
+    func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
+        return calendar.dateComponents(Set(components), from: self)
+    }
+
+    func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
+        return calendar.component(component, from: self)
+    }
+}
+
 class Helper : ObservableObject{
     
     @Published var model: GitsaweModel?;

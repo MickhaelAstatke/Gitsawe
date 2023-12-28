@@ -20,6 +20,9 @@
 		F36F4C912B3D4C73004976FB /* AbyssinicaSIL-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C8F2B3D4BCD004976FB /* AbyssinicaSIL-Regular.ttf */; };
 		F36F4C932B3D6F37004976FB /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C922B3D6F37004976FB /* Page.swift */; };
 		F36F4C952B3D79EC004976FB /* 3.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C942B3D79EC004976FB /* 3.json */; };
+		F36F4C982B3DF383004976FB /* PagedInfiniteScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C972B3DF383004976FB /* PagedInfiniteScrollView.swift */; };
+		F36F4C9A2B3DF3E2004976FB /* Steppable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C992B3DF3E2004976FB /* Steppable.swift */; };
+		F36F4C9C2B3DFEE4004976FB /* 108.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C9B2B3DFEE4004976FB /* 108.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		F36F4C902B3D4C2E004976FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F36F4C922B3D6F37004976FB /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		F36F4C942B3D79EC004976FB /* 3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 3.json; sourceTree = "<group>"; };
+		F36F4C972B3DF383004976FB /* PagedInfiniteScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedInfiniteScrollView.swift; sourceTree = "<group>"; };
+		F36F4C992B3DF3E2004976FB /* Steppable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steppable.swift; sourceTree = "<group>"; };
+		F36F4C9B2B3DFEE4004976FB /* 108.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 108.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,7 @@
 		F36F4C842B3D3A62004976FB /* data */ = {
 			isa = PBXGroup;
 			children = (
+				F36F4C9B2B3DFEE4004976FB /* 108.json */,
 				F36F4C942B3D79EC004976FB /* 3.json */,
 				F36F4C852B3D3A72004976FB /* 1.json */,
 			);
@@ -104,6 +111,7 @@
 		F36F4C872B3D3A80004976FB /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F36F4C962B3DF357004976FB /* scroll */,
 				F36F4C8B2B3D43FF004976FB /* Letter.swift */,
 				F36F4C8D2B3D4512004976FB /* Misbak.swift */,
 				F36F4C922B3D6F37004976FB /* Page.swift */,
@@ -118,6 +126,15 @@
 				F36F4C892B3D3D48004976FB /* Helper.swift */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		F36F4C962B3DF357004976FB /* scroll */ = {
+			isa = PBXGroup;
+			children = (
+				F36F4C972B3DF383004976FB /* PagedInfiniteScrollView.swift */,
+				F36F4C992B3DF3E2004976FB /* Steppable.swift */,
+			);
+			path = scroll;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +198,7 @@
 				F36F4C952B3D79EC004976FB /* 3.json in Resources */,
 				F36F4C792B3D2EE2004976FB /* Preview Assets.xcassets in Resources */,
 				F36F4C862B3D3A72004976FB /* 1.json in Resources */,
+				F36F4C9C2B3DFEE4004976FB /* 108.json in Resources */,
 				F36F4C912B3D4C73004976FB /* AbyssinicaSIL-Regular.ttf in Resources */,
 				F36F4C762B3D2EE2004976FB /* Assets.xcassets in Resources */,
 			);
@@ -197,7 +215,9 @@
 				F36F4C812B3D2F1C004976FB /* Gitsawe.xcdatamodeld in Sources */,
 				F36F4C932B3D6F37004976FB /* Page.swift in Sources */,
 				F36F4C8A2B3D3D48004976FB /* Helper.swift in Sources */,
+				F36F4C982B3DF383004976FB /* PagedInfiniteScrollView.swift in Sources */,
 				F36F4C8C2B3D43FF004976FB /* Letter.swift in Sources */,
+				F36F4C9A2B3DF3E2004976FB /* Steppable.swift in Sources */,
 				F36F4C722B3D2EDF004976FB /* GitsaweApp.swift in Sources */,
 				F36F4C8E2B3D4512004976FB /* Misbak.swift in Sources */,
 				F36F4C832B3D39E2004976FB /* Model.swift in Sources */,

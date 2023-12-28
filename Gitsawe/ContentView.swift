@@ -9,9 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var dayTab = 1;
+    
     var body: some View {
         VStack {
-            Page()
+            
+            TabView(selection: $dayTab.animation(.easeIn)) {
+                ForEach(1...30, id: \.self) { id  in
+                    Page(id: "\(id)")
+                        .tag(id)
+                }
+            }
+            .tableStyle(.inset)
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            
         }
         .padding()
     }

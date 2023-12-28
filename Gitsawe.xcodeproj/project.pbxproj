@@ -19,6 +19,7 @@
 		F36F4C8E2B3D4512004976FB /* Misbak.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C8D2B3D4512004976FB /* Misbak.swift */; };
 		F36F4C912B3D4C73004976FB /* AbyssinicaSIL-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C8F2B3D4BCD004976FB /* AbyssinicaSIL-Regular.ttf */; };
 		F36F4C932B3D6F37004976FB /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C922B3D6F37004976FB /* Page.swift */; };
+		F36F4C952B3D79EC004976FB /* 3.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C942B3D79EC004976FB /* 3.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		F36F4C8F2B3D4BCD004976FB /* AbyssinicaSIL-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AbyssinicaSIL-Regular.ttf"; sourceTree = "<group>"; };
 		F36F4C902B3D4C2E004976FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F36F4C922B3D6F37004976FB /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		F36F4C942B3D79EC004976FB /* 3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 3.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		F36F4C842B3D3A62004976FB /* data */ = {
 			isa = PBXGroup;
 			children = (
+				F36F4C942B3D79EC004976FB /* 3.json */,
 				F36F4C852B3D3A72004976FB /* 1.json */,
 			);
 			path = data;
@@ -175,6 +178,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F36F4C952B3D79EC004976FB /* 3.json in Resources */,
 				F36F4C792B3D2EE2004976FB /* Preview Assets.xcassets in Resources */,
 				F36F4C862B3D3A72004976FB /* 1.json in Resources */,
 				F36F4C912B3D4C73004976FB /* AbyssinicaSIL-Regular.ttf in Resources */,

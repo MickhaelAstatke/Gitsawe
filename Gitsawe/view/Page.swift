@@ -8,7 +8,15 @@
 import SwiftUI
 
 struct Page: View {
-    @StateObject var helper = Helper(id: "1");
+    var id: String;
+    var helper: Helper;
+    
+    init(id: String){
+        self.id = id;
+        helper = Helper(id: id)
+        
+        print("initializing \(id)")
+    }
     
     var body: some View {
         VStack(spacing: 50){
@@ -43,5 +51,5 @@ struct Page: View {
 }
 
 #Preview {
-    Page()
+    Page(id: "1")
 }

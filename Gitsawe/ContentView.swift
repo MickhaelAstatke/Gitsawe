@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject private var helper: Helper
+    
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Misbak()
+                .environmentObject(helper)
         }
         .padding()
     }

@@ -11,6 +11,13 @@
 		F36F4C742B3D2EDF004976FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C732B3D2EDF004976FB /* ContentView.swift */; };
 		F36F4C762B3D2EE2004976FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C752B3D2EE2004976FB /* Assets.xcassets */; };
 		F36F4C792B3D2EE2004976FB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C782B3D2EE2004976FB /* Preview Assets.xcassets */; };
+		F36F4C812B3D2F1C004976FB /* Gitsawe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C7F2B3D2F1C004976FB /* Gitsawe.xcdatamodeld */; };
+		F36F4C832B3D39E2004976FB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C822B3D39E2004976FB /* Model.swift */; };
+		F36F4C862B3D3A72004976FB /* 1.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C852B3D3A72004976FB /* 1.json */; };
+		F36F4C8A2B3D3D48004976FB /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C892B3D3D48004976FB /* Helper.swift */; };
+		F36F4C8C2B3D43FF004976FB /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C8B2B3D43FF004976FB /* Letter.swift */; };
+		F36F4C8E2B3D4512004976FB /* Misbak.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C8D2B3D4512004976FB /* Misbak.swift */; };
+		F36F4C912B3D4C73004976FB /* AbyssinicaSIL-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C8F2B3D4BCD004976FB /* AbyssinicaSIL-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +26,14 @@
 		F36F4C732B3D2EDF004976FB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F36F4C752B3D2EE2004976FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F36F4C782B3D2EE2004976FB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F36F4C802B3D2F1C004976FB /* Gitsawe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gitsawe.xcdatamodel; sourceTree = "<group>"; };
+		F36F4C822B3D39E2004976FB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F36F4C852B3D3A72004976FB /* 1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1.json; sourceTree = "<group>"; };
+		F36F4C892B3D3D48004976FB /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		F36F4C8B2B3D43FF004976FB /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
+		F36F4C8D2B3D4512004976FB /* Misbak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misbak.swift; sourceTree = "<group>"; };
+		F36F4C8F2B3D4BCD004976FB /* AbyssinicaSIL-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AbyssinicaSIL-Regular.ttf"; sourceTree = "<group>"; };
+		F36F4C902B3D4C2E004976FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +66,16 @@
 		F36F4C702B3D2EDF004976FB /* Gitsawe */ = {
 			isa = PBXGroup;
 			children = (
+				F36F4C902B3D4C2E004976FB /* Info.plist */,
+				F36F4C8F2B3D4BCD004976FB /* AbyssinicaSIL-Regular.ttf */,
+				F36F4C872B3D3A80004976FB /* view */,
+				F36F4C842B3D3A62004976FB /* data */,
+				F36F4C882B3D3A8E004976FB /* controller */,
 				F36F4C712B3D2EDF004976FB /* GitsaweApp.swift */,
 				F36F4C732B3D2EDF004976FB /* ContentView.swift */,
 				F36F4C752B3D2EE2004976FB /* Assets.xcassets */,
 				F36F4C772B3D2EE2004976FB /* Preview Content */,
+				F36F4C7F2B3D2F1C004976FB /* Gitsawe.xcdatamodeld */,
 			);
 			path = Gitsawe;
 			sourceTree = "<group>";
@@ -65,6 +86,32 @@
 				F36F4C782B3D2EE2004976FB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F36F4C842B3D3A62004976FB /* data */ = {
+			isa = PBXGroup;
+			children = (
+				F36F4C852B3D3A72004976FB /* 1.json */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		F36F4C872B3D3A80004976FB /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F36F4C8B2B3D43FF004976FB /* Letter.swift */,
+				F36F4C8D2B3D4512004976FB /* Misbak.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F36F4C882B3D3A8E004976FB /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F36F4C822B3D39E2004976FB /* Model.swift */,
+				F36F4C892B3D3D48004976FB /* Helper.swift */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +173,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F36F4C792B3D2EE2004976FB /* Preview Assets.xcassets in Resources */,
+				F36F4C862B3D3A72004976FB /* 1.json in Resources */,
+				F36F4C912B3D4C73004976FB /* AbyssinicaSIL-Regular.ttf in Resources */,
 				F36F4C762B3D2EE2004976FB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,7 +187,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F36F4C742B3D2EDF004976FB /* ContentView.swift in Sources */,
+				F36F4C812B3D2F1C004976FB /* Gitsawe.xcdatamodeld in Sources */,
+				F36F4C8A2B3D3D48004976FB /* Helper.swift in Sources */,
+				F36F4C8C2B3D43FF004976FB /* Letter.swift in Sources */,
 				F36F4C722B3D2EDF004976FB /* GitsaweApp.swift in Sources */,
+				F36F4C8E2B3D4512004976FB /* Misbak.swift in Sources */,
+				F36F4C832B3D39E2004976FB /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +329,7 @@
 				DEVELOPMENT_TEAM = HB3Y56JZF5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Gitsawe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +359,7 @@
 				DEVELOPMENT_TEAM = HB3Y56JZF5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Gitsawe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -344,6 +400,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F36F4C7F2B3D2F1C004976FB /* Gitsawe.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F36F4C802B3D2F1C004976FB /* Gitsawe.xcdatamodel */,
+			);
+			currentVersion = F36F4C802B3D2F1C004976FB /* Gitsawe.xcdatamodel */;
+			path = Gitsawe.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F36F4C662B3D2EDF004976FB /* Project object */;
 }

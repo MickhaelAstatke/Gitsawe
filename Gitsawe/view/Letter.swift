@@ -14,12 +14,11 @@ struct Letter: View {
     var body: some View {
         VStack(spacing: 0){
             Text(sign ?? " ")
-                .font(.system(size: 7))
-                .frame(height: 7)
+                .font(.system(size: 8))
+                .frame(height: 8)
             
             Text(letter)
-                //.font(.system(size: 20))
-                .font(Font.custom("AbyssinicaSIL-Regular", size: 21) )
+                .font(Font.custom("AbyssinicaSIL-Regular", size: 23) )
         }
     }
 }

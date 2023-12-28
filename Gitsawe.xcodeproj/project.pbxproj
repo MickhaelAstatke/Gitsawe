@@ -23,6 +23,15 @@
 		F36F4C982B3DF383004976FB /* PagedInfiniteScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C972B3DF383004976FB /* PagedInfiniteScrollView.swift */; };
 		F36F4C9A2B3DF3E2004976FB /* Steppable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C992B3DF3E2004976FB /* Steppable.swift */; };
 		F36F4C9C2B3DFEE4004976FB /* 108.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C9B2B3DFEE4004976FB /* 108.json */; };
+		F36F4CA82B3E1223004976FB /* NowPlayingCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C9F2B3E1223004976FB /* NowPlayingCenter.swift */; };
+		F36F4CA92B3E1223004976FB /* PlaylistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4CA02B3E1223004976FB /* PlaylistItem.swift */; };
+		F36F4CAA2B3E1223004976FB /* RemoteCommandCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4CA12B3E1223004976FB /* RemoteCommandCenter.swift */; };
+		F36F4CAB2B3E1223004976FB /* AudioHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4CA22B3E1223004976FB /* AudioHandler.swift */; };
+		F36F4CAC2B3E1223004976FB /* SampleBufferSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4CA42B3E1223004976FB /* SampleBufferSource.swift */; };
+		F36F4CAD2B3E1223004976FB /* SampleBufferSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4CA52B3E1223004976FB /* SampleBufferSerializer.swift */; };
+		F36F4CAE2B3E1223004976FB /* SampleBufferPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4CA62B3E1223004976FB /* SampleBufferPlayer.swift */; };
+		F36F4CAF2B3E1223004976FB /* SampleBufferItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4CA72B3E1223004976FB /* SampleBufferItem.swift */; };
+		F36F4CB32B3E21E5004976FB /* ሰላም.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CB22B3E1F10004976FB /* ሰላም.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +53,15 @@
 		F36F4C972B3DF383004976FB /* PagedInfiniteScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedInfiniteScrollView.swift; sourceTree = "<group>"; };
 		F36F4C992B3DF3E2004976FB /* Steppable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steppable.swift; sourceTree = "<group>"; };
 		F36F4C9B2B3DFEE4004976FB /* 108.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 108.json; sourceTree = "<group>"; };
+		F36F4C9F2B3E1223004976FB /* NowPlayingCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingCenter.swift; sourceTree = "<group>"; };
+		F36F4CA02B3E1223004976FB /* PlaylistItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistItem.swift; sourceTree = "<group>"; };
+		F36F4CA12B3E1223004976FB /* RemoteCommandCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteCommandCenter.swift; sourceTree = "<group>"; };
+		F36F4CA22B3E1223004976FB /* AudioHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioHandler.swift; sourceTree = "<group>"; };
+		F36F4CA42B3E1223004976FB /* SampleBufferSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleBufferSource.swift; sourceTree = "<group>"; };
+		F36F4CA52B3E1223004976FB /* SampleBufferSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleBufferSerializer.swift; sourceTree = "<group>"; };
+		F36F4CA62B3E1223004976FB /* SampleBufferPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleBufferPlayer.swift; sourceTree = "<group>"; };
+		F36F4CA72B3E1223004976FB /* SampleBufferItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleBufferItem.swift; sourceTree = "<group>"; };
+		F36F4CB22B3E1F10004976FB /* ሰላም.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ሰላም.m4a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +99,7 @@
 				F36F4C872B3D3A80004976FB /* view */,
 				F36F4C842B3D3A62004976FB /* data */,
 				F36F4C882B3D3A8E004976FB /* controller */,
+				F36F4C9D2B3E1223004976FB /* MediaPlayer */,
 				F36F4C712B3D2EDF004976FB /* GitsaweApp.swift */,
 				F36F4C732B3D2EDF004976FB /* ContentView.swift */,
 				F36F4C752B3D2EE2004976FB /* Assets.xcassets */,
@@ -101,9 +120,8 @@
 		F36F4C842B3D3A62004976FB /* data */ = {
 			isa = PBXGroup;
 			children = (
-				F36F4C9B2B3DFEE4004976FB /* 108.json */,
-				F36F4C942B3D79EC004976FB /* 3.json */,
-				F36F4C852B3D3A72004976FB /* 1.json */,
+				F36F4CB12B3E1ECC004976FB /* audio */,
+				F36F4CB02B3E1EBB004976FB /* json */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -135,6 +153,55 @@
 				F36F4C992B3DF3E2004976FB /* Steppable.swift */,
 			);
 			path = scroll;
+			sourceTree = "<group>";
+		};
+		F36F4C9D2B3E1223004976FB /* MediaPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				F36F4C9E2B3E1223004976FB /* Controller */,
+				F36F4CA22B3E1223004976FB /* AudioHandler.swift */,
+				F36F4CA32B3E1223004976FB /* Player */,
+			);
+			path = MediaPlayer;
+			sourceTree = "<group>";
+		};
+		F36F4C9E2B3E1223004976FB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F36F4C9F2B3E1223004976FB /* NowPlayingCenter.swift */,
+				F36F4CA02B3E1223004976FB /* PlaylistItem.swift */,
+				F36F4CA12B3E1223004976FB /* RemoteCommandCenter.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F36F4CA32B3E1223004976FB /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				F36F4CA42B3E1223004976FB /* SampleBufferSource.swift */,
+				F36F4CA52B3E1223004976FB /* SampleBufferSerializer.swift */,
+				F36F4CA62B3E1223004976FB /* SampleBufferPlayer.swift */,
+				F36F4CA72B3E1223004976FB /* SampleBufferItem.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		F36F4CB02B3E1EBB004976FB /* json */ = {
+			isa = PBXGroup;
+			children = (
+				F36F4C9B2B3DFEE4004976FB /* 108.json */,
+				F36F4C942B3D79EC004976FB /* 3.json */,
+				F36F4C852B3D3A72004976FB /* 1.json */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		F36F4CB12B3E1ECC004976FB /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				F36F4CB22B3E1F10004976FB /* ሰላም.m4a */,
+			);
+			path = audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +267,7 @@
 				F36F4C862B3D3A72004976FB /* 1.json in Resources */,
 				F36F4C9C2B3DFEE4004976FB /* 108.json in Resources */,
 				F36F4C912B3D4C73004976FB /* AbyssinicaSIL-Regular.ttf in Resources */,
+				F36F4CB32B3E21E5004976FB /* ሰላም.m4a in Resources */,
 				F36F4C762B3D2EE2004976FB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,15 +279,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F36F4CA82B3E1223004976FB /* NowPlayingCenter.swift in Sources */,
 				F36F4C742B3D2EDF004976FB /* ContentView.swift in Sources */,
+				F36F4CAF2B3E1223004976FB /* SampleBufferItem.swift in Sources */,
+				F36F4CAE2B3E1223004976FB /* SampleBufferPlayer.swift in Sources */,
 				F36F4C812B3D2F1C004976FB /* Gitsawe.xcdatamodeld in Sources */,
 				F36F4C932B3D6F37004976FB /* Page.swift in Sources */,
 				F36F4C8A2B3D3D48004976FB /* Helper.swift in Sources */,
 				F36F4C982B3DF383004976FB /* PagedInfiniteScrollView.swift in Sources */,
 				F36F4C8C2B3D43FF004976FB /* Letter.swift in Sources */,
+				F36F4CAC2B3E1223004976FB /* SampleBufferSource.swift in Sources */,
 				F36F4C9A2B3DF3E2004976FB /* Steppable.swift in Sources */,
 				F36F4C722B3D2EDF004976FB /* GitsaweApp.swift in Sources */,
+				F36F4CAB2B3E1223004976FB /* AudioHandler.swift in Sources */,
 				F36F4C8E2B3D4512004976FB /* Misbak.swift in Sources */,
+				F36F4CAA2B3E1223004976FB /* RemoteCommandCenter.swift in Sources */,
+				F36F4CAD2B3E1223004976FB /* SampleBufferSerializer.swift in Sources */,
+				F36F4CA92B3E1223004976FB /* PlaylistItem.swift in Sources */,
 				F36F4C832B3D39E2004976FB /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

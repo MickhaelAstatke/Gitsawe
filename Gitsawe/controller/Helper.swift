@@ -7,7 +7,23 @@
 
 import Foundation
 
+/*
+ usage enum Direction: CaseIterable {
+ case east, south, west, north
+}
 
+print(Direction.east.next()) // south
+print(Direction.north.next()) // east
+ 
+ */
+extension CaseIterable where Self: Equatable {
+    func next() -> Self {
+        let all = Self.allCases
+        let idx = all.firstIndex(of: self)!
+        let next = all.index(after: idx)
+        return all[next == all.endIndex ? all.startIndex : next]
+    }
+}
 
 extension Formatter {
     
@@ -64,4 +80,26 @@ class Helper : ObservableObject{
         
         self.id = id;
     }
+}
+
+
+class Utility: NSObject {
+    
+    private static var timeHMSFormatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [.minute, .second]
+        formatter.zeroFormattingBehavior = [.pad]
+        return formatter
+    }()
+    
+    static func formatSecondsToHMS(_ seconds: Double) -> String {
+        guard !seconds.isNaN,
+            let text = timeHMSFormatter.string(from: seconds) else {
+                return "00:00"
+        }
+         
+        return text
+    }
+    
 }

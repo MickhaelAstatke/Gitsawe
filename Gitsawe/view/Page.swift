@@ -25,7 +25,7 @@ struct Page: View {
         track.image = "eotc-celebration"; // Image name from asset
         track.title = "ምስባክ"
         track.subtitle = "ዘ\(Formatter.ethFullDay.string(from: date))"
-        track.url = Bundle.main.url(forResource: "ሰላም", withExtension: "m4a"); //Path of the audio file
+        track.url = Bundle.main.url(forResource: helper.model?.audio, withExtension: "m4a"); //Path of the audio file
         
         print(track)
         NotificationCenter.default.post(name: Notification.Name("com.gitsawe.LOAD"), object: [track]  )
@@ -33,25 +33,27 @@ struct Page: View {
     
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 25){
+        VStack(alignment: .leading, spacing: 0){
             if(helper.model != nil){
                 
                 Text("(\(helper.id)) \(helper.model!.psalm!)")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
+                    .padding(.bottom)
+                    .padding(.horizontal)
                 
                 Misbak(misbak: helper.model!.misbak)
+                    .padding(.bottom)
+                    .padding(.horizontal)
                 
-                Text("ዲ.ን.፡ \(helper.model!.paul!)")
-                    .font(.subheadline)
-                Text("ንፍቅ ዲ.ን.፡ \(helper.model!.melkit!)")
-                    .font(.subheadline)
-                Text("ንፍቅ ካህ.፡\(helper.model!.gh!)")
-                    .font(.subheadline)
-                Text("ወንጌል፡ \(helper.model!.wengel!)")
-                    .font(.subheadline)
-                Text("ቅዳሴ፡ \(helper.model!.kidase!)")
-                    .font(.subheadline)
+                Row(title: "ዲ.ን.", value: helper.model!.paul!)
+                    .background(Color(.systemGroupedBackground).opacity(0.7))
+                Row(title: "ንፍቅ ዲ.ን.", value: helper.model!.melkit!)
+                Row(title: "ንፍቅ ካህን", value: helper.model!.gh!)
+                    .background(Color(.systemGroupedBackground).opacity(0.7))
+                Row(title: "ወንጌል", value: helper.model!.wengel!)
+                Row(title: "ቅዳሴ", value: helper.model!.kidase!)
+                    .background(Color(.systemGroupedBackground).opacity(0.7))
                 
                 Spacer()
                 
@@ -64,11 +66,34 @@ struct Page: View {
                 Spacer()
             }
         }
-        .padding()
+        .padding(.vertical)
     }
     
 }
 
 #Preview {
     Page(date: .now)
+}
+
+
+
+
+struct Row: View {
+    
+    var title: String;
+    var value: String;
+    
+    var body: some View {
+        HStack{
+            Text(title)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+            
+            Text(value)
+                .font(.subheadline)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+    }
+    
 }

@@ -21,6 +21,7 @@ struct GitsaweModel:  Codable,  Identifiable {
     var gh: String?
     var kidase: String?
     var psalm: String? 
+    var audio: String?
     var misbak: [[KeyValue]]
 }
 

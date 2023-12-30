@@ -19,52 +19,38 @@ struct ContentView: View {
         VStack {
             PagedInfiniteScrollView(content: { index in
                 VStack(spacing: 0){
-                    
-                    Text("\(Formatter.ethWeekDay.string(from: index))")
-                        .font(Font.custom("AbyssinicaSIL-Regular", size: 20) )
-                        .foregroundStyle(.secondary)
-                    
                     HStack(alignment:.center){
                         
-                        Button(action: {
-                            currentPage = Calendar.current.date(byAdding: .day, value: -1, to: currentPage)!
-                        }) {
-                            Image(systemName: "chevron.left")
-                                .padding()
-                                .contentShape(Rectangle())
-                        }
-                        .buttonStyle(.plain)
+                        prevButton
                         
                         Spacer()
                         
+                        Text("\(Formatter.ethWeekDay.string(from: index))")
+                            .font(.headline)
+                            .foregroundStyle(.secondary)
                         Text("\(Formatter.ethFullDay.string(from: index))")
                             .font(.headline)
                         
                         Spacer()
                         
-                        Button(action: {
-                            currentPage = Calendar.current.date(byAdding: .day, value: 1, to: currentPage)!
-                        }) {
-                            Image(systemName: "chevron.right")
-                                .padding()
-                                .contentShape(Rectangle())
-                        }
-                        .buttonStyle(.plain)
+                        nextButton
                     }
+                    .background(Color(.secondarySystemBackground))
                     
                     Divider()
                     
-                    Page(date: index)
-                        .ignoresSafeArea()
-                        .environmentObject(handler)
-                        .padding(.top)
+                    ScrollView{
+                        Page(date: index)
+                            .ignoresSafeArea()
+                            .environmentObject(handler)
+                            .padding(.top)
+                    }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color(.systemBackground))
                 
             }, currentPage: $currentPage)
 
-            
             
             VStack(alignment: .leading){
                 
@@ -98,9 +84,29 @@ struct ContentView: View {
         .edgesIgnoringSafeArea(.all)
         .background(Color(.systemBackground))
 
-        
     }
     
+    var prevButton: some View {
+        Button(action: {
+            currentPage = Calendar.current.date(byAdding: .day, value: -1, to: currentPage)!
+        }) {
+            Image(systemName: "chevron.left")
+                .padding()
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+    }
+    
+    var nextButton: some View{
+        Button(action: {
+            currentPage = Calendar.current.date(byAdding: .day, value: 1, to: currentPage)!
+        }) {
+            Image(systemName: "chevron.right")
+                .padding()
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+    }
     
     var timeDisplay: some View{
         HStack(alignment: .center, spacing: 50){

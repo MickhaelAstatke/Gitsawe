@@ -63,15 +63,16 @@ extension Date {
 
 class Helper : ObservableObject{
     
-    @Published var model: GitsaweModel?;
+    @Published var model: [GitsaweModel];
     @Published var id: String;
         
     init(id: String) {
+        self.model = [];
         if let path = Bundle.main.path(forResource: id, ofType: "json") {
             print("path \(path)")
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                model = try JSONDecoder().decode(GitsaweModel.self, from: data);
+                model = try JSONDecoder().decode([GitsaweModel].self, from: data);
             } catch {
                 print(error.localizedDescription);
                 print("Unexpected error occured while loading json data")

@@ -11,8 +11,6 @@ struct Page: View {
     var id: String;
     var helper: Helper;
     
-    var track: AudioTrack;
-    
     init(date: Date){
         let components = date.get(.day, .month, .year, calendar: Calendar.init(identifier: .ethiopicAmeteMihret))
 
@@ -20,51 +18,58 @@ struct Page: View {
         helper = Helper(id: id)
         
         
-        //TODO: Fetch this from the helper.model
-        track = AudioTrack();
-        track.image = "eotc-celebration"; // Image name from asset
-        track.title = "ምስባክ"
-        track.subtitle = "ዘ\(Formatter.ethFullDay.string(from: date))"
-        track.url = Bundle.main.url(forResource: helper.model?.audio, withExtension: "m4a"); //Path of the audio file
+        var playlist:[AudioTrack] = [];
+        helper.model.forEach { model in
+            var track = AudioTrack();
+            track.image = "eotc-celebration"; // Image name from asset
+            track.title = "ምስባክ"
+            track.subtitle = "ዘ\(Formatter.ethFullDay.string(from: date))"
+            track.url = Bundle.main.url(forResource: model.audio, withExtension: "m4a");
+            playlist.append(track);
+        }
         
-        print(track)
-        NotificationCenter.default.post(name: Notification.Name("com.gitsawe.LOAD"), object: [track]  )
+        print(playlist)
+        NotificationCenter.default.post(name: Notification.Name("com.gitsawe.LOAD"), object: playlist  )
     }
     
     var body: some View {
         
         VStack(alignment: .leading, spacing: 0){
-            if(helper.model != nil){
-                
-                Text("(\(helper.id)) \(helper.model!.psalm!)")
+            
+            ForEach(helper.model, id: \.self){model in
+                Text(model.psalm!)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .padding(.bottom)
                     .padding(.horizontal)
                 
-                Misbak(misbak: helper.model!.misbak)
+                Misbak(misbak: model.misbak)
                     .padding(.bottom)
                     .padding(.horizontal)
                 
-                Row(title: "ዲ.ን.", value: helper.model!.paul!)
+                Row(title: "ዲ.ን.", value: model.paul!)
                     .background(Color(.systemGroupedBackground).opacity(0.7))
-                Row(title: "ንፍቅ ዲ.ን.", value: helper.model!.melkit!)
-                Row(title: "ንፍቅ ካህን", value: helper.model!.gh!)
+                Row(title: "ንፍቅ ዲ.ን.", value: model.meliekt!)
+                Row(title: "ንፍቅ ካህን", value: model.gh!)
                     .background(Color(.systemGroupedBackground).opacity(0.7))
-                Row(title: "ወንጌል", value: helper.model!.wengel!)
-                Row(title: "ቅዳሴ", value: helper.model!.kidase!)
+                Row(title: "ወንጌል", value: model.wengel!)
+                Row(title: "ቅዳሴ", value: model.kidase!)
                     .background(Color(.systemGroupedBackground).opacity(0.7))
                 
-                Spacer()
-                
-                
-            }else{
+                Text("from \(helper.id).json")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal)
+            }
+            
+            if(helper.model.count == 0){
                 Text("Missing or Incorrect \(helper.id).json")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 
-                Spacer()
             }
+            
+            Spacer()
         }
         .padding(.vertical)
     }
@@ -74,8 +79,6 @@ struct Page: View {
 #Preview {
     Page(date: .now)
 }
-
-
 
 
 struct Row: View {

@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23A344" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="Gitsawe" representedClassName="Gitsawe" syncable="YES" codeGenerationType="class">
         <attribute name="gh" optional="YES" attributeType="String"/>
-        <attribute name="melkit" optional="YES" attributeType="String"/>
+        <attribute name="meliekt" optional="YES" attributeType="String"/>
         <attribute name="paul" optional="YES" attributeType="String"/>
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="wengel" optional="YES" attributeType="Transformable"/>

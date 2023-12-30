@@ -11,7 +11,7 @@ struct Page: View {
     var id: String;
     var helper: Helper;
     
-    init(date: Date){
+    init(date: Date, audioPlayer: AudioHandler){
         let components = date.get(.day, .month, .year, calendar: Calendar.init(identifier: .ethiopicAmeteMihret))
 
         self.id = "\(components.day! + (components.month! - 1) * 30)";
@@ -29,7 +29,7 @@ struct Page: View {
         }
         
         print(playlist)
-        NotificationCenter.default.post(name: Notification.Name("com.gitsawe.LOAD"), object: playlist  )
+        audioPlayer.loadPlaylist(tracks: playlist)
     }
     
     var body: some View {
@@ -56,10 +56,13 @@ struct Page: View {
                 Row(title: "ቅዳሴ", value: model.kidase!)
                     .background(Color(.systemGroupedBackground).opacity(0.7))
                 
-                Text("from \(helper.id).json")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal)
+                HStack{
+                    Spacer()
+                    Text("from \(helper.id).json")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal)
+                }
             }
             
             if(helper.model.count == 0){
@@ -77,7 +80,7 @@ struct Page: View {
 }
 
 #Preview {
-    Page(date: .now)
+    Page(date: .now, audioPlayer: AudioHandler())
 }
 
 

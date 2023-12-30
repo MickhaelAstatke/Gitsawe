@@ -28,6 +28,7 @@ struct ContentView: View {
                         Text("\(Formatter.ethWeekDay.string(from: index))")
                             .font(.headline)
                             .foregroundStyle(.secondary)
+                        
                         Text("\(Formatter.ethFullDay.string(from: index))")
                             .font(.headline)
                         
@@ -40,7 +41,7 @@ struct ContentView: View {
                     Divider()
                     
                     ScrollView{
-                        Page(date: index)
+                        Page(date: index, audioPlayer: handler)
                             .ignoresSafeArea()
                             .environmentObject(handler)
                             .padding(.top)

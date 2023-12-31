@@ -14,9 +14,17 @@ struct Page: View {
     init(date: Date, audioPlayer: AudioHandler){
         let components = date.get(.day, .month, .year, calendar: Calendar.init(identifier: .ethiopicAmeteMihret))
 
-        self.id = "\(components.day! + (components.month! - 1) * 30)";
-        helper = Helper(id: id)
+        let month = Formatter.ethMonthEng.string(from: date).lowercased();
+        let dayOfWeek = Formatter.ethWeekDay.string(from: date);
+        print("\(date) -- \(month) -- \(dayOfWeek)")
         
+        
+        if(dayOfWeek == "እሑድ"){
+            self.id = "mezmur_ብርሃን"; // using መዝሙር_xyz for e.g. መዝሙር_ብርሃን. TODO: check which week and add logic for the mezmur
+        }else{
+            self.id = "\(month)_\(components.day!)"; // using month_dd for e.g. meskerem_2
+        }
+        helper = Helper(id: id)
         
         var playlist:[AudioTrack] = [];
         helper.model.forEach { model in

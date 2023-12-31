@@ -13,16 +13,13 @@
 		F36F4C792B3D2EE2004976FB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C782B3D2EE2004976FB /* Preview Assets.xcassets */; };
 		F36F4C812B3D2F1C004976FB /* Gitsawe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C7F2B3D2F1C004976FB /* Gitsawe.xcdatamodeld */; };
 		F36F4C832B3D39E2004976FB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C822B3D39E2004976FB /* Model.swift */; };
-		F36F4C862B3D3A72004976FB /* 1.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C852B3D3A72004976FB /* 1.json */; };
 		F36F4C8A2B3D3D48004976FB /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C892B3D3D48004976FB /* Helper.swift */; };
 		F36F4C8C2B3D43FF004976FB /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C8B2B3D43FF004976FB /* Letter.swift */; };
 		F36F4C8E2B3D4512004976FB /* Misbak.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C8D2B3D4512004976FB /* Misbak.swift */; };
 		F36F4C912B3D4C73004976FB /* AbyssinicaSIL-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C8F2B3D4BCD004976FB /* AbyssinicaSIL-Regular.ttf */; };
 		F36F4C932B3D6F37004976FB /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C922B3D6F37004976FB /* Page.swift */; };
-		F36F4C952B3D79EC004976FB /* 3.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C942B3D79EC004976FB /* 3.json */; };
 		F36F4C982B3DF383004976FB /* PagedInfiniteScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C972B3DF383004976FB /* PagedInfiniteScrollView.swift */; };
 		F36F4C9A2B3DF3E2004976FB /* Steppable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C992B3DF3E2004976FB /* Steppable.swift */; };
-		F36F4C9C2B3DFEE4004976FB /* 108.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C9B2B3DFEE4004976FB /* 108.json */; };
 		F36F4CA82B3E1223004976FB /* NowPlayingCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C9F2B3E1223004976FB /* NowPlayingCenter.swift */; };
 		F36F4CA92B3E1223004976FB /* PlaylistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4CA02B3E1223004976FB /* PlaylistItem.swift */; };
 		F36F4CAA2B3E1223004976FB /* RemoteCommandCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4CA12B3E1223004976FB /* RemoteCommandCenter.swift */; };
@@ -35,13 +32,11 @@
 		F36F4CB52B3E68A1004976FB /* WrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4CB42B3E68A1004976FB /* WrappingHStack.swift */; };
 		F36F4CB82B3E6C48004976FB /* አርእዩነ ፍኖቶ.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CB62B3E6C48004976FB /* አርእዩነ ፍኖቶ.m4a */; };
 		F36F4CB92B3E6C48004976FB /* ወእንዘ ሰሙን.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CB72B3E6C48004976FB /* ወእንዘ ሰሙን.m4a */; };
-		F36F4CC12B3E6C84004976FB /* 111.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CBA2B3E6C83004976FB /* 111.json */; };
-		F36F4CC22B3E6C84004976FB /* 112.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CBB2B3E6C83004976FB /* 112.json */; };
-		F36F4CC32B3E6C84004976FB /* 115.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CBC2B3E6C84004976FB /* 115.json */; };
-		F36F4CC42B3E6C84004976FB /* 110.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CBD2B3E6C84004976FB /* 110.json */; };
-		F36F4CC52B3E6C84004976FB /* 113.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CBE2B3E6C84004976FB /* 113.json */; };
-		F36F4CC62B3E6C84004976FB /* 114.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CBF2B3E6C84004976FB /* 114.json */; };
-		F36F4CC72B3E6C84004976FB /* 109.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CC02B3E6C84004976FB /* 109.json */; };
+		F36F4CCF2B40EE98004976FB /* pagumen_1.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CCC2B40EE98004976FB /* pagumen_1.json */; };
+		F36F4CD02B40EE98004976FB /* tahsas_21.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CCD2B40EE98004976FB /* tahsas_21.json */; };
+		F36F4CD12B40EE98004976FB /* tahsas_20.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CCE2B40EE98004976FB /* tahsas_20.json */; };
+		F36F4CD42B40F1C2004976FB /* mezmur_ኖላዊ.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CD22B40F1C2004976FB /* mezmur_ኖላዊ.json */; };
+		F36F4CD52B40F1C2004976FB /* mezmur_ብርሃን.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CD32B40F1C2004976FB /* mezmur_ብርሃን.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,17 +47,14 @@
 		F36F4C782B3D2EE2004976FB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F36F4C802B3D2F1C004976FB /* Gitsawe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gitsawe.xcdatamodel; sourceTree = "<group>"; };
 		F36F4C822B3D39E2004976FB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		F36F4C852B3D3A72004976FB /* 1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1.json; sourceTree = "<group>"; };
 		F36F4C892B3D3D48004976FB /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		F36F4C8B2B3D43FF004976FB /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
 		F36F4C8D2B3D4512004976FB /* Misbak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misbak.swift; sourceTree = "<group>"; };
 		F36F4C8F2B3D4BCD004976FB /* AbyssinicaSIL-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AbyssinicaSIL-Regular.ttf"; sourceTree = "<group>"; };
 		F36F4C902B3D4C2E004976FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F36F4C922B3D6F37004976FB /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
-		F36F4C942B3D79EC004976FB /* 3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 3.json; sourceTree = "<group>"; };
 		F36F4C972B3DF383004976FB /* PagedInfiniteScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedInfiniteScrollView.swift; sourceTree = "<group>"; };
 		F36F4C992B3DF3E2004976FB /* Steppable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steppable.swift; sourceTree = "<group>"; };
-		F36F4C9B2B3DFEE4004976FB /* 108.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 108.json; sourceTree = "<group>"; };
 		F36F4C9F2B3E1223004976FB /* NowPlayingCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingCenter.swift; sourceTree = "<group>"; };
 		F36F4CA02B3E1223004976FB /* PlaylistItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistItem.swift; sourceTree = "<group>"; };
 		F36F4CA12B3E1223004976FB /* RemoteCommandCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteCommandCenter.swift; sourceTree = "<group>"; };
@@ -75,13 +67,11 @@
 		F36F4CB42B3E68A1004976FB /* WrappingHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappingHStack.swift; sourceTree = "<group>"; };
 		F36F4CB62B3E6C48004976FB /* አርእዩነ ፍኖቶ.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "አርእዩነ ፍኖቶ.m4a"; sourceTree = "<group>"; };
 		F36F4CB72B3E6C48004976FB /* ወእንዘ ሰሙን.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ወእንዘ ሰሙን.m4a"; sourceTree = "<group>"; };
-		F36F4CBA2B3E6C83004976FB /* 111.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 111.json; sourceTree = "<group>"; };
-		F36F4CBB2B3E6C83004976FB /* 112.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 112.json; sourceTree = "<group>"; };
-		F36F4CBC2B3E6C84004976FB /* 115.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 115.json; sourceTree = "<group>"; };
-		F36F4CBD2B3E6C84004976FB /* 110.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 110.json; sourceTree = "<group>"; };
-		F36F4CBE2B3E6C84004976FB /* 113.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 113.json; sourceTree = "<group>"; };
-		F36F4CBF2B3E6C84004976FB /* 114.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 114.json; sourceTree = "<group>"; };
-		F36F4CC02B3E6C84004976FB /* 109.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 109.json; sourceTree = "<group>"; };
+		F36F4CCC2B40EE98004976FB /* pagumen_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pagumen_1.json; sourceTree = "<group>"; };
+		F36F4CCD2B40EE98004976FB /* tahsas_21.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tahsas_21.json; sourceTree = "<group>"; };
+		F36F4CCE2B40EE98004976FB /* tahsas_20.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tahsas_20.json; sourceTree = "<group>"; };
+		F36F4CD22B40F1C2004976FB /* mezmur_ኖላዊ.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mezmur_ኖላዊ.json"; sourceTree = "<group>"; };
+		F36F4CD32B40F1C2004976FB /* mezmur_ብርሃን.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mezmur_ብርሃን.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,16 +200,11 @@
 		F36F4CB02B3E1EBB004976FB /* json */ = {
 			isa = PBXGroup;
 			children = (
-				F36F4C9B2B3DFEE4004976FB /* 108.json */,
-				F36F4CC02B3E6C84004976FB /* 109.json */,
-				F36F4CBD2B3E6C84004976FB /* 110.json */,
-				F36F4CBA2B3E6C83004976FB /* 111.json */,
-				F36F4CBB2B3E6C83004976FB /* 112.json */,
-				F36F4CBE2B3E6C84004976FB /* 113.json */,
-				F36F4CBF2B3E6C84004976FB /* 114.json */,
-				F36F4CBC2B3E6C84004976FB /* 115.json */,
-				F36F4C942B3D79EC004976FB /* 3.json */,
-				F36F4C852B3D3A72004976FB /* 1.json */,
+				F36F4CD32B40F1C2004976FB /* mezmur_ብርሃን.json */,
+				F36F4CD22B40F1C2004976FB /* mezmur_ኖላዊ.json */,
+				F36F4CCC2B40EE98004976FB /* pagumen_1.json */,
+				F36F4CCE2B40EE98004976FB /* tahsas_20.json */,
+				F36F4CCD2B40EE98004976FB /* tahsas_21.json */,
 			);
 			path = json;
 			sourceTree = "<group>";
@@ -292,22 +277,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F36F4CC22B3E6C84004976FB /* 112.json in Resources */,
-				F36F4C952B3D79EC004976FB /* 3.json in Resources */,
 				F36F4CB82B3E6C48004976FB /* አርእዩነ ፍኖቶ.m4a in Resources */,
-				F36F4CC52B3E6C84004976FB /* 113.json in Resources */,
-				F36F4CC32B3E6C84004976FB /* 115.json in Resources */,
 				F36F4C792B3D2EE2004976FB /* Preview Assets.xcassets in Resources */,
-				F36F4C862B3D3A72004976FB /* 1.json in Resources */,
-				F36F4CC42B3E6C84004976FB /* 110.json in Resources */,
-				F36F4C9C2B3DFEE4004976FB /* 108.json in Resources */,
-				F36F4CC62B3E6C84004976FB /* 114.json in Resources */,
-				F36F4CC72B3E6C84004976FB /* 109.json in Resources */,
 				F36F4C912B3D4C73004976FB /* AbyssinicaSIL-Regular.ttf in Resources */,
 				F36F4CB32B3E21E5004976FB /* ሰላም.m4a in Resources */,
+				F36F4CD52B40F1C2004976FB /* mezmur_ብርሃን.json in Resources */,
+				F36F4CD02B40EE98004976FB /* tahsas_21.json in Resources */,
 				F36F4C762B3D2EE2004976FB /* Assets.xcassets in Resources */,
+				F36F4CCF2B40EE98004976FB /* pagumen_1.json in Resources */,
+				F36F4CD42B40F1C2004976FB /* mezmur_ኖላዊ.json in Resources */,
+				F36F4CD12B40EE98004976FB /* tahsas_20.json in Resources */,
 				F36F4CB92B3E6C48004976FB /* ወእንዘ ሰሙን.m4a in Resources */,
-				F36F4CC12B3E6C84004976FB /* 111.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

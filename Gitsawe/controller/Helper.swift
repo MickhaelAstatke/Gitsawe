@@ -43,6 +43,22 @@ extension Formatter {
     }()
     
     
+    static let ethMonth: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar.init(identifier: Calendar.Identifier.ethiopicAmeteMihret)
+        formatter.locale = Locale(identifier: "amh")
+        formatter.dateFormat = "MMMM"
+        return formatter
+    }()
+    
+    static let ethMonthEng: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar.init(identifier: Calendar.Identifier.ethiopicAmeteMihret)
+        formatter.dateFormat = "MMMM"
+        return formatter
+    }()
+    
+    
     static let ethWeekDay: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "amh")
@@ -67,6 +83,7 @@ class Helper : ObservableObject{
     @Published var id: String;
         
     init(id: String) {
+        print("loading \(id)")
         self.model = [];
         if let path = Bundle.main.path(forResource: id, ofType: "json") {
             print("path \(path)")

@@ -25,5 +25,5 @@ struct Misbak: View {
 }
 
 #Preview {
-    Misbak(misbak: [[KeyValue(t: "T", s: "^")]])
+    Misbak(misbak: [[KeyValue(t: "ነ", s: "በእ"),KeyValue(t: "w", s: ","),KeyValue(t: "o", s: ""),KeyValue(t: "T", s: "^")]])
 }

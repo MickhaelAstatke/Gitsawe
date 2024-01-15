@@ -16,7 +16,7 @@ struct Misbak: View {
             ForEach(misbak, id: \.self){line in
                 WrappingHStack(horizontalSpacing: 0){
                     ForEach(line, id: \.self){l in
-                        Letter(letter: l.t, sign: l.s)
+                        Letter(letter: l.t, sign: l.s, sign2: l.s2)
                     }
                 }
             }

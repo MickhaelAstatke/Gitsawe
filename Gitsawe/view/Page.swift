@@ -36,7 +36,7 @@ struct Page: View {
             playlist.append(track);
         }
         
-        print(playlist)
+        print(playlist.count)
         audioPlayer.loadPlaylist(tracks: playlist)
     }
     
@@ -45,32 +45,61 @@ struct Page: View {
         VStack(alignment: .leading, spacing: 0){
             
             ForEach(helper.model, id: \.self){model in
-                Text(model.psalm!)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .padding(.bottom)
-                    .padding(.horizontal)
-                
-                Misbak(misbak: model.misbak)
-                    .padding(.bottom)
-                    .padding(.horizontal)
-                
-                Row(title: "ዲ.ን.", value: model.paul!)
-                    .background(Color(.systemGroupedBackground).opacity(0.7))
-                Row(title: "ንፍቅ ዲ.ን.", value: model.meliekt!)
-                Row(title: "ንፍቅ ካህን", value: model.gh!)
-                    .background(Color(.systemGroupedBackground).opacity(0.7))
-                Row(title: "ወንጌል", value: model.wengel!)
-                Row(title: "ቅዳሴ", value: model.kidase!)
-                    .background(Color(.systemGroupedBackground).opacity(0.7))
                 
                 HStack{
-                    Spacer()
-                    Text("from \(helper.id).json")
-                        .font(.caption)
+                    Text(model.title)
+                        .font(Font.custom("AbyssinicaSIL-Regular", size: 23) )
                         .foregroundStyle(.secondary)
-                        .padding(.horizontal)
+                    
+                    Spacer()
+                    
+                    Text(model.psalm!)
+                        .font(.subheadline)
                 }
+                .padding(.horizontal)
+                .padding(.bottom)
+
+                
+                Misbak(misbak: model.misbak)
+                    .padding(.horizontal)
+                
+                if(model.paul != nil){
+                    Row(title: "ዲ.ን.", value: model.paul!)
+                        .background(Color(.secondarySystemBackground).opacity(0.7))
+                        .font(.subheadline)
+                }
+                
+                if(model.meliekt != nil){
+                    Row(title: "ንፍቅ ዲ.ን.", value: model.meliekt!)
+                        .font(.subheadline)
+                }
+                    
+                if(model.gh != nil){
+                    Row(title: "ንፍቅ ካህን", value: model.gh!)
+                        .background(Color(.secondarySystemBackground).opacity(0.7))
+                        .font(.subheadline)
+                }
+                        
+                Row(title: "ወንጌል", value: model.wengel!)
+                    .font(.subheadline)
+                    .background(model.gh == nil ? Color(.secondarySystemBackground).opacity(0.7) : Color(.systemBackground))
+                        
+                if(model.kidase != nil){
+                    Row(title: "ቅዳሴ", value: model.kidase!)
+                        .background(Color(.secondarySystemBackground).opacity(0.7))
+                        .font(.subheadline)
+                }
+                
+                Spacer(minLength: 50)
+            }
+            
+            
+            HStack{
+                Spacer()
+                Text("from \(helper.id).json")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal)
             }
             
             if(helper.model.count == 0){
@@ -100,11 +129,11 @@ struct Row: View {
     var body: some View {
         HStack{
             Text(title)
-                .font(.subheadline)
+                //.font(.subheadline)
                 .foregroundStyle(.secondary)
             
             Text(value)
-                .font(.subheadline)
+                //.font(.subheadline)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()

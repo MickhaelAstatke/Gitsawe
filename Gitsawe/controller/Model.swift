@@ -11,10 +11,12 @@ struct KeyValue: Hashable, Codable , Identifiable{
     let id: UUID = UUID();
     var t: String;
     var s: String?;
+    var s2: String?;
 }
 
 struct GitsaweModel: Hashable, Codable,  Identifiable {
     let id: UUID = UUID();
+    var title: String;
     var wengel: String?
     var paul: String?
     var meliekt: String?

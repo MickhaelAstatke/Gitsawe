@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F310B12F2B55292100682D52 /* ter_1.json in Resources */ = {isa = PBXBuildFile; fileRef = F310B12E2B55292100682D52 /* ter_1.json */; };
 		F36F4C722B3D2EDF004976FB /* GitsaweApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C712B3D2EDF004976FB /* GitsaweApp.swift */; };
 		F36F4C742B3D2EDF004976FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F4C732B3D2EDF004976FB /* ContentView.swift */; };
 		F36F4C762B3D2EE2004976FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F36F4C752B3D2EE2004976FB /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F310B12E2B55292100682D52 /* ter_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ter_1.json; sourceTree = "<group>"; };
 		F36F4C6E2B3D2EDF004976FB /* Gitsawe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gitsawe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F36F4C712B3D2EDF004976FB /* GitsaweApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitsaweApp.swift; sourceTree = "<group>"; };
 		F36F4C732B3D2EDF004976FB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				F36F4CD32B40F1C2004976FB /* mezmur_ብርሃን.json */,
 				F36F4CD22B40F1C2004976FB /* mezmur_ኖላዊ.json */,
 				F36F4CCC2B40EE98004976FB /* pagumen_1.json */,
+				F310B12E2B55292100682D52 /* ter_1.json */,
 				F36F4CCE2B40EE98004976FB /* tahsas_20.json */,
 				F36F4CCD2B40EE98004976FB /* tahsas_21.json */,
 			);
@@ -282,6 +285,7 @@
 				F36F4C912B3D4C73004976FB /* AbyssinicaSIL-Regular.ttf in Resources */,
 				F36F4CB32B3E21E5004976FB /* ሰላም.m4a in Resources */,
 				F36F4CD52B40F1C2004976FB /* mezmur_ብርሃን.json in Resources */,
+				F310B12F2B55292100682D52 /* ter_1.json in Resources */,
 				F36F4CD02B40EE98004976FB /* tahsas_21.json in Resources */,
 				F36F4C762B3D2EE2004976FB /* Assets.xcassets in Resources */,
 				F36F4CCF2B40EE98004976FB /* pagumen_1.json in Resources */,

@@ -10,12 +10,17 @@ import SwiftUI
 struct Letter: View {
     var letter: String;
     var sign: String?;
+    var sign2: String?;
     
     var body: some View {
         VStack(spacing: 0){
+            Text(sign2 ?? " ")
+                .font(.system(size: 8))
+                .frame(height: 13)
+            
             Text(sign ?? " ")
                 .font(.system(size: 8))
-                .frame(height: 8)
+                .frame(height: 9)
             
             Text(letter)
                 .font(Font.custom("AbyssinicaSIL-Regular", size: 23) )

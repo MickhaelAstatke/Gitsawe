@@ -94,19 +94,20 @@ struct Page: View {
             }
             
             
-            HStack{
-                Spacer()
-                Text("from \(helper.id).json")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal)
-            }
             
             if(helper.model.count == 0){
                 Text("Missing or Incorrect \(helper.id).json")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 
+            }else{
+                HStack{
+                    Spacer()
+                    Text("from \(helper.id).json")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal)
+                }
             }
             
             Spacer()

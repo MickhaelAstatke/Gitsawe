@@ -25,12 +25,19 @@ struct ContentView: View {
                         
                         Spacer()
                         
+                        
                         Text("\(Formatter.ethWeekDay.string(from: index))")
                             .font(.headline)
                             .foregroundStyle(.secondary)
                         
-                        Text("\(Formatter.ethFullDay.string(from: index))")
-                            .font(.headline)
+                        DatePicker("ቀን", selection: $currentPage, displayedComponents: .date)
+                            .environment(\.calendar, Calendar.init(identifier: Calendar.Identifier.ethiopicAmeteMihret ))
+                            .datePickerStyle( CompactDatePickerStyle() )
+                            .environment(\.locale, Locale.init(identifier: "amh"))
+                            .labelsHidden()
+                        
+//                        Text("\(Formatter.ethFullDay.string(from: index))")
+//                            .font(.headline)
                         
                         Spacer()
                         

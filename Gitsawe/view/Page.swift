@@ -45,73 +45,8 @@ struct Page: View {
         VStack(alignment: .leading, spacing: 0){
             
             ForEach(helper.model, id: \.self){model in
-                
-                HStack(alignment: .center){
-                    
-                    RoundedRectangle(cornerRadius: 10.0)
-                        .fill(.green)
-                        .frame(width: 5)
-                    
-                    Text(model.title)
-                        .font(Font.custom("AbyssinicaSIL-Regular", size: 23) )
-                    
-                    Spacer()
-                    
-                    Text(model.psalm!)
-                        .font(.subheadline)
-//                        .font(Font.custom("AbyssinicaSIL-Regular", size: 23) )
-                }
-                .foregroundColor(.secondary)
-                .padding(.horizontal)
-//                .padding(.bottom)
-                .frame(maxWidth: .infinity, alignment: .leading)
-
-                
-                Misbak(misbak: model.misbak)
-                    .padding(.horizontal)
-                    .padding(.bottom)
-                
-                
-                LazyVGrid(columns:  [
-                    GridItem(.flexible(), spacing: 10, alignment: .trailing),
-                    GridItem(.flexible(), spacing: 10, alignment: .leading),
-                ], spacing: 10) {
-                    
-                    if(model.paul != nil){
-                        Row(title: "ዲ.ን.", value: model.paul!)
-                        // .background(Color(.secondarySystemBackground).opacity(0.7))
-                            .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
-                            
-                    }
-                    
-                    if(model.meliekt != nil){
-                        Row(title: "ንፍቅ \nዲ.ን.", value: model.meliekt!)
-                            .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
-                    }
-                    
-                    if(model.gh != nil){
-                        Row(title: "ንፍቅ \nካህን", value: model.gh!)
-                        // .background(Color(.secondarySystemBackground).opacity(0.7))
-                            .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
-                    }
-                    
-                    Row(title: "ወንጌል", value: model.wengel!)
-                        .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
-                    //.background(model.gh == nil ? Color(.secondarySystemBackground).opacity(0.7) : Color(.systemBackground))
-                    
-                    
-                    if(model.kidase != nil){
-                        Row(title: "ቅዳሴ", value: model.kidase!)
-                        // .background(Color(.secondarySystemBackground).opacity(0.7))
-                            .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
-                    }
-                }
-                .padding(.horizontal)
-                
-                Spacer(minLength: 60)
+                Accordion(model: model)
             }
-            
-            
             
             if(helper.model.count == 0){
                 Text("Missing or Incorrect \(helper.id).json")
@@ -141,47 +76,96 @@ struct Page: View {
 }
 
 
-struct Row2: View {
+struct Accordion: View {
     
-    var title: String;
-    var value: String;
+    var model: GitsaweModel;
+    @State var isExpanded: Bool = true;
     
     var body: some View {
-        HStack{
-//            RoundedRectangle(cornerRadius: 10.0)
-//                .fill(.green)
-//                .frame(width: 5)
-
-            Text(title)
-                //.font(.subheadline)
-                .foregroundStyle(.secondary)
+        DisclosureGroup(isExpanded: $isExpanded) {
             
-            Text(value)
-                .minimumScaleFactor(0.5)
-                .multilineTextAlignment(.center)
+            Misbak(misbak: model.misbak)
+                .padding(.bottom)
+            
+            VStack(spacing: 10){
+                HStack(spacing: 10){
+                    
+                    if(model.paul != nil){
+                        Row(title: "ዲ.ን.", value: model.paul!)
+                    }
+                    
+                    if(model.meliekt != nil){
+                        Row(title: "ንፍቅ \nዲ.ን.", value: model.meliekt!)
+                    }
+                }
+                
+                HStack(spacing: 10){
+                    if(model.gh != nil){
+                        Row(title: "ንፍቅ \nካህን", value: model.gh!)
+                    }
+                    
+                    Row(title: "ወንጌል", value: model.wengel!, nobreak: model.paul == nil)
+                }
+                
+                HStack(spacing: 10){
+                    if(model.kidase != nil){
+                        Row(title: "ቅዳሴ", value: model.kidase!)
+                            .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
+                    }
+                }
+            }
+            
+            Spacer(minLength: 60)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-//        .padding()
+    label: {
+        HStack{
+            RoundedRectangle(cornerRadius: 10.0)
+                .fill(.green)
+                .frame(width: 5)
+            
+            VStack(alignment: .leading){
+                Text(model.title)
+                    .font(Font.custom("AbyssinicaSIL-Regular", size: 23) )
+                
+                Text(model.psalm!)
+                    .font(.caption)
+            }
+            .foregroundColor(.primary.opacity(0.8))
+        }
+        .underline(false)
     }
-    
+    .padding(.horizontal)
+    }
 }
+
 
 struct Row: View {
     
     var title: String;
     var value: String;
+    var nobreak: Bool?;
+    
+    init(title: String, value: String, nobreak: Bool? = nil) {
+        self.title = title
+        self.nobreak = nobreak
+        self.value = value
+        
+        if(self.nobreak == true){
+            self.value = self.value.replacingOccurrences(of: "\n", with: "")
+        }
+    }
     
     var body: some View {
         HStack(spacing: 5){
             Text(title)
                 .foregroundStyle(.secondary)
-                .font(.caption)
-                .minimumScaleFactor(0.6)
+                .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
             
             Text(value)
                 .minimumScaleFactor(0.4)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.primary.opacity(0.8))
+                .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
         }
         .frame(maxWidth: .infinity, alignment: .center)
         .padding(.vertical,7)

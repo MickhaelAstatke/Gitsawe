@@ -46,51 +46,69 @@ struct Page: View {
             
             ForEach(helper.model, id: \.self){model in
                 
-                HStack{
+                HStack(alignment: .center){
+                    
+                    RoundedRectangle(cornerRadius: 10.0)
+                        .fill(.green)
+                        .frame(width: 5)
+                    
                     Text(model.title)
                         .font(Font.custom("AbyssinicaSIL-Regular", size: 23) )
-                        .foregroundStyle(.secondary)
                     
                     Spacer()
                     
                     Text(model.psalm!)
                         .font(.subheadline)
+//                        .font(Font.custom("AbyssinicaSIL-Regular", size: 23) )
                 }
+                .foregroundColor(.secondary)
                 .padding(.horizontal)
-                .padding(.bottom)
+//                .padding(.bottom)
+                .frame(maxWidth: .infinity, alignment: .leading)
 
                 
                 Misbak(misbak: model.misbak)
                     .padding(.horizontal)
+                    .padding(.bottom)
                 
-                if(model.paul != nil){
-                    Row(title: "ዲ.ን.", value: model.paul!)
-                        .background(Color(.secondarySystemBackground).opacity(0.7))
-                        .font(.subheadline)
-                }
                 
-                if(model.meliekt != nil){
-                    Row(title: "ንፍቅ ዲ.ን.", value: model.meliekt!)
-                        .font(.subheadline)
-                }
+                LazyVGrid(columns:  [
+                    GridItem(.flexible(), spacing: 10, alignment: .trailing),
+                    GridItem(.flexible(), spacing: 10, alignment: .leading),
+                ], spacing: 10) {
                     
-                if(model.gh != nil){
-                    Row(title: "ንፍቅ ካህን", value: model.gh!)
-                        .background(Color(.secondarySystemBackground).opacity(0.7))
-                        .font(.subheadline)
+                    if(model.paul != nil){
+                        Row(title: "ዲ.ን.", value: model.paul!)
+                        // .background(Color(.secondarySystemBackground).opacity(0.7))
+                            .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
+                            
+                    }
+                    
+                    if(model.meliekt != nil){
+                        Row(title: "ንፍቅ \nዲ.ን.", value: model.meliekt!)
+                            .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
+                    }
+                    
+                    if(model.gh != nil){
+                        Row(title: "ንፍቅ \nካህን", value: model.gh!)
+                        // .background(Color(.secondarySystemBackground).opacity(0.7))
+                            .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
+                    }
+                    
+                    Row(title: "ወንጌል", value: model.wengel!)
+                        .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
+                    //.background(model.gh == nil ? Color(.secondarySystemBackground).opacity(0.7) : Color(.systemBackground))
+                    
+                    
+                    if(model.kidase != nil){
+                        Row(title: "ቅዳሴ", value: model.kidase!)
+                        // .background(Color(.secondarySystemBackground).opacity(0.7))
+                            .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
+                    }
                 }
-                        
-                Row(title: "ወንጌል", value: model.wengel!)
-                    .font(.subheadline)
-                    .background(model.gh == nil ? Color(.secondarySystemBackground).opacity(0.7) : Color(.systemBackground))
-                        
-                if(model.kidase != nil){
-                    Row(title: "ቅዳሴ", value: model.kidase!)
-                        .background(Color(.secondarySystemBackground).opacity(0.7))
-                        .font(.subheadline)
-                }
+                .padding(.horizontal)
                 
-                Spacer(minLength: 50)
+                Spacer(minLength: 60)
             }
             
             
@@ -111,6 +129,7 @@ struct Page: View {
             }
             
             Spacer()
+                .frame(minHeight: 75)
         }
         .padding(.vertical)
     }
@@ -122,22 +141,54 @@ struct Page: View {
 }
 
 
-struct Row: View {
+struct Row2: View {
     
     var title: String;
     var value: String;
     
     var body: some View {
         HStack{
+//            RoundedRectangle(cornerRadius: 10.0)
+//                .fill(.green)
+//                .frame(width: 5)
+
             Text(title)
                 //.font(.subheadline)
                 .foregroundStyle(.secondary)
             
             Text(value)
-                //.font(.subheadline)
+                .minimumScaleFactor(0.5)
+                .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
+//        .padding()
+    }
+    
+}
+
+struct Row: View {
+    
+    var title: String;
+    var value: String;
+    
+    var body: some View {
+        HStack(spacing: 5){
+            Text(title)
+                .foregroundStyle(.secondary)
+                .font(.caption)
+                .minimumScaleFactor(0.6)
+            
+            Text(value)
+                .minimumScaleFactor(0.4)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.primary.opacity(0.8))
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+        .padding(.vertical,7)
+        .padding(.horizontal,7)
+        .background(Material.ultraThin)
+        .cornerRadius(10.0)
+        .clipped()
     }
     
 }

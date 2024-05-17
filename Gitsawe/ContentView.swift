@@ -12,8 +12,16 @@ struct ContentView: View {
     @State var month = 1;
     @State var dayTab = 1;
     
+    @State private var showPlayer: Bool = false;
+    @State private var miniPlayerHeight: CGFloat = 50;
+    @State private var mainPlayerHeight: CGFloat = 90;
+    @State private var currentPresentationDetent: PresentationDetent =  .height(50)
+    
     @State private var currentPage: Date = .now
     @StateObject var handler: AudioHandler = AudioHandler()
+    
+    @State private var expandSheet: Bool = false
+    @Namespace private var animation
     
     var body: some View {
         VStack {
@@ -25,19 +33,25 @@ struct ContentView: View {
                         
                         Spacer()
                         
-                        
-                        Text("\(Formatter.ethWeekDay.string(from: index))")
-                            .font(.headline)
-                            .foregroundStyle(.secondary)
-                        
-                        DatePicker("ቀን", selection: $currentPage, displayedComponents: .date)
-                            .environment(\.calendar, Calendar.init(identifier: Calendar.Identifier.ethiopicAmeteMihret ))
-                            .datePickerStyle( CompactDatePickerStyle() )
-                            .environment(\.locale, Locale.init(identifier: "amh"))
-                            .labelsHidden()
-                        
-//                        Text("\(Formatter.ethFullDay.string(from: index))")
-//                            .font(.headline)
+                        HStack{
+                            HStack(spacing: 0){
+                                Text(LocalizedStringKey(Formatter.ethFullDay.string(from: currentPage)))
+                                    .minimumScaleFactor(0.5)
+                            }
+                            
+                            Image(systemName: "calendar")
+                                .foregroundColor(.accentColor)
+                        }
+                          .overlay {
+                            DatePicker(
+                              selection: $currentPage,
+                              displayedComponents: .date
+                            ){}
+                                  .environment(\.calendar, Calendar.init(identifier: Calendar.Identifier.ethiopicAmeteMihret ))
+                                  .datePickerStyle( CompactDatePickerStyle() )
+                                  .environment(\.locale, Locale.init(identifier: "amh"))
+                                  .opacity(0.011) // Minimum that still allows this to be tappable
+                          }
                         
                         Spacer()
                         
@@ -56,42 +70,23 @@ struct ContentView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color(.systemBackground))
-                
             }, currentPage: $currentPage)
-
             
-            VStack(alignment: .leading){
-                
-                VStack(alignment: .center){
-                    titleAndSubtitle
-                    
-                    sliderControl
-                    
-                    timeDisplay
-                }
-                
-                HStack(alignment: .center, spacing: 25){
-                    backButton
-                    
-                    playButton
-                    
-                    forwardButton
-                }
-                .frame(maxWidth: .infinity)
+        }
+        .safeAreaInset(edge: .bottom) {
+            CustomBottomSheet()
+        }
+        .overlay {
+            if expandSheet {
+                ExpandedBottomSheet(expandSheet: $expandSheet, animation: animation)
+                /// Transition for more fluent Animation
+                    .transition(.asymmetric(insertion: .identity, removal: .offset(y: -5)))
             }
-            .padding(.horizontal, 25)
-            .padding(.bottom, 25)
-            .padding(.top)
-            .background(Color(.init(red: 20/255, green: 33/255, blue: 56/255, alpha: 1)))
-            .foregroundStyle(.white)
-            .cornerRadius(15)
-            .shadow(radius: 1)
-            
         }
         .ignoresSafeArea()
         .edgesIgnoringSafeArea(.all)
         .background(Color(.systemBackground))
-
+        .animation(.easeOut, value: showPlayer)
     }
     
     var prevButton: some View {
@@ -116,120 +111,109 @@ struct ContentView: View {
         .buttonStyle(.plain)
     }
     
-    var timeDisplay: some View{
-        HStack(alignment: .center, spacing: 50){
-            Text("\(Utility.formatSecondsToHMS(self.handler.currentTime))")
-                .font(.caption)
-            Spacer()
-            Text("\(Utility.formatSecondsToHMS(self.handler.currentDuration))")
-                .font(.caption)
-        }
-    }
     
-    var titleAndSubtitle: some View{
-        HStack(alignment: .center){
-            
-            Text(handler.currentTrack?.title ?? "ምስባክ")
-                .font(Font.custom("AbyssinicaSIL-Regular", size: 17))
-            
-            Spacer()
-            
-            Button(action: {
-                self.handler.toggleRate()
-            }) {
-                Text("\(String(self.handler.rate.rawValue))x")
-                    .font(.caption.bold())
-                    .frame(width: 45, height: 25)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 50)
-                            .strokeBorder(lineWidth: 2)
-                    )
-                    .padding(5)
-                    .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
-            
-            Button(action: {
-                self.handler.toggleLoop()
-            }) {
-                Image(systemName: self.handler.loop.rawValue)
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                    .padding(5)
-                    .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
-            
-        }
-        .padding(.bottom)
-    }
-    
-    var backButton: some View{
-        Button(action: {
-            handler.skip(by: -15)
-        }) {
-            Image(systemName: "gobackward.15")
-                .font(.system(size: 25))
-                .padding()
-                .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
-        .disabled(self.handler.state == .disable)
-        
-    }
-    
-    var playButton: some View{
-        Button(action: {
-            handler.togglePlayPause()
-        }) {
-            Image(systemName: self.handler.state == .playing ? "pause.fill": "play.fill")
-                .font(.system(size: 25))
-                .padding(10)
-                .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
-        .disabled(self.handler.state == .disable)
-    }
-    
-    var forwardButton: some View{
-        Button(action: {
-            handler.skip(by: 15)
-        }) {
-            Image(systemName: "goforward.15")
-                .font(.system(size: 25))
-                .padding(10)
-                .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
-        .disabled(self.handler.state == .disable)
-    }
-    
-    
-    var sliderControl: some View{
-        Slider(value: self.$handler.currentTime,
-               in: 0...self.handler.currentDuration,
-               onEditingChanged: sliderEditingChanged ) {
-                    Text("seek/progress slider")
-            }
-           .tint(.white)
-           .disabled(self.handler.state == .disable)
-    }
-    
-    
-    private func sliderEditingChanged(editingStarted: Bool) {
-        if editingStarted {
-            handler.timeObserverActive = false;
-        }
-        else {
-            self.handler.skip(to: self.handler.currentTime)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                handler.timeObserverActive = true;
+    /// Custom Bottom Sheet
+    @ViewBuilder
+    func CustomBottomSheet() -> some View {
+        /// Animating Sheet Background (To Look Like It's Expanding From the Bottom)
+        ZStack {
+            if expandSheet {
+                Rectangle()
+                    .fill(.clear)
+            } else {
+                Rectangle()
+                    .fill(.ultraThickMaterial)
+                    .overlay {
+                        /// Music Info
+                        MusicInfo(expandSheet: $expandSheet, animation: animation)
+                    }
+                    .matchedGeometryEffect(id: "BGVIEW", in: animation)
             }
         }
+        .frame(height: 90)
+        /// Separator Line
+        .overlay(alignment: .bottom, content: {
+            Rectangle()
+                .fill(.gray.opacity(0.3))
+                .frame(height: 1)
+        })
+        /// 49: Default Tab Bar Height
+    //    .offset(y: -49)
     }
+
+
+
+    
     
 }
 
 #Preview {
     ContentView()
+}
+
+
+
+
+
+
+
+/// Resuable File
+struct MusicInfo: View {
+    @Binding var expandSheet: Bool
+    var animation: Namespace.ID
+    var body: some View {
+        HStack(spacing: 0) {
+            /// Adding Matched Geometry Effect (Hero Animation)
+            ZStack {
+                if !expandSheet {
+                    GeometryReader {
+                        let size = $0.size
+                        
+                        Image("Artwork")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: size.width, height: size.height)
+                            .clipShape(RoundedRectangle(cornerRadius: expandSheet ? 15 : 5, style: .continuous))
+                    }
+                    .matchedGeometryEffect(id: "ARTWORK", in: animation)
+                }
+            }
+            .frame(width: 45, height: 45)
+            
+            Text("Look What You Made Me do")
+                .fontWeight(.semibold)
+                .lineLimit(1)
+                .padding(.horizontal, 15)
+            
+            Spacer(minLength: 0)
+            
+            Button {
+                
+            } label: {
+                Image(systemName: "pause.fill")
+                    .font(.title2)
+            }
+            .buttonStyle(.plain)
+            
+            Button {
+                
+            } label: {
+                Image(systemName: "forward.fill")
+                    .font(.title2)
+            }
+            .padding(.leading, 25)
+            .buttonStyle(.plain)
+        }
+        .foregroundColor(.primary)
+        .padding(.horizontal)
+        .padding(.bottom, 5)
+        .frame(height: 70)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            /// Expanding Bottom Sheet
+            withAnimation(.easeInOut(duration: 0.3)) {
+                expandSheet = true
+            }
+        }
+    }
 }

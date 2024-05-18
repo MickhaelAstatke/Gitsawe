@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct ExpandedBottomSheet: View {
     @EnvironmentObject var ap: AudioHandler;
@@ -14,6 +15,8 @@ struct ExpandedBottomSheet: View {
     /// View Properties
     @State private var animateContent: Bool = false
     @State private var offsetY: CGFloat = 0
+    @State private var showLyrics: Bool = false
+    
     var body: some View {
         GeometryReader {
             let size = $0.size
@@ -54,12 +57,29 @@ struct ExpandedBottomSheet: View {
                     GeometryReader {
                         let size = $0.size
                         
-                        Image("Artwork")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
+                        ZStack() {
+                            Image("Artwork")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: size.width, height: size.height)
+                                .clipShape(RoundedRectangle(cornerRadius: animateContent ? 15 : 5, style: .continuous))
+                                .modifier(FlipOpacity(percentage: showLyrics ? 0 : 1))
+                                .rotation3DEffect(Angle.degrees(showLyrics ? 180 : 360), axis: (0,1,0))
+                            
+                            VStack(spacing: 25){
+                                ForEach("ወትቀዉም ንግሥት በየማንከ፤\nበአልባሰ ወርቅ ዑጽፍት ወኁብርት፤\nስምዒ ወለትየ ወርዒ ወአጽምዒ ዕዝነኪ።".components(separatedBy: "\n"), id: \.self){ line in
+                                    Text(line)
+                                        .font(Font.custom("AbyssinicaSIL-Regular", size: 30) )
+                                        .frame(maxWidth: size.width, alignment: .leading)
+                                }
+                            }
                             .frame(width: size.width, height: size.height)
                             .clipShape(RoundedRectangle(cornerRadius: animateContent ? 15 : 5, style: .continuous))
+                            .modifier(FlipOpacity(percentage: showLyrics ? 1 : 0))
+                            .rotation3DEffect(Angle.degrees(showLyrics ? 0 : 180), axis: (0,1,0))
+                        }
                     }
+                    .animation(.smooth, value: showLyrics)
                     .matchedGeometryEffect(id: "ARTWORK", in: animation)
                     /// For Square Artwork Image
                     .frame(height: size.width - 50)
@@ -124,7 +144,7 @@ struct ExpandedBottomSheet: View {
                                 .fontWeight(.semibold)
                                 .foregroundColor(.white)
                             
-                            Text("Taylor Swift")
+                            Text(ap.currentTrack?.artist ?? "")
                                 .foregroundColor(.gray)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -146,29 +166,16 @@ struct ExpandedBottomSheet: View {
                     }
                     
                     /// Timing Indicator
-                    Capsule()
-                        .fill(.ultraThinMaterial)
-                        .environment(\.colorScheme, .light)
-                        .frame(height: 5)
-                        .padding(.top, spacing)
-                    
-                    /// Timing Label View
-                    HStack {
-                        Text("0:00")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                        
-                        Spacer(minLength: 0)
-                        
-                        Text("3:33")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                    }
+                    MusicProgressSlider(value: $ap.currentTime, inRange: 0.00...ap.currentDuration, onEditingChanged: sliderEditingChanged, color: .white)
+                    .frame(height: 40)
+                    .disabled(ap.state == .disable)
+                    .environment(\.colorScheme, .light)
+                    .padding(.top, spacing)
                     
                     /// Playback Controls
                     HStack(spacing: size.width * 0.18) {
                         Button {
-                            ap.skip(by: 15)
+                            ap.skip(by: -15)
                         } label: {
                             Image(systemName: "gobackward.15")
                             /// Dynamic Sizing for Smaller to Larger iPhones
@@ -197,29 +204,26 @@ struct ExpandedBottomSheet: View {
                     }
                     .foregroundColor(.white)
                     .padding(.vertical, spacing)
-//                    .frame(maxHeight: .infinity)
+                    
                     
                     
                     HStack(alignment: .top, spacing: size.width * 0.18) {
                         Button {
-                            
+                            showLyrics.toggle()
                         } label: {
-                            Image(systemName: "quote.bubble")
+                            Image(systemName: showLyrics ? "quote.bubble.fill" : "quote.bubble")
                                 .font(.title2)
                         }
                         .buttonStyle(.plain)
+                        .frame(width: 50, height: 50)
                         
-                        VStack(spacing: 6) {
-                            Button {
-                                
-                            } label: {
-                                Image(systemName: "airpods.gen3")
-                                    .font(.title2)
-                            }
-                            .buttonStyle(.plain)
+                        VStack(spacing: 0){
+                            AirPlayView()
+                                .frame(width: 50, height: 50)
                             
-                            Text("iJustine's Airpods")
+                            Text("AirPlay")
                                 .font(.caption)
+                                .offset(y: -5)
                         }
                         
                         Button {
@@ -229,6 +233,7 @@ struct ExpandedBottomSheet: View {
                                 .font(.title2)
                         }
                         .buttonStyle(.plain)
+                        .frame(width: 50, height: 50)
                     }
                     .foregroundColor(.white)
                     .blendMode(.overlay)
@@ -238,7 +243,33 @@ struct ExpandedBottomSheet: View {
             }
         }
     }
-}
+    
+                                                  private struct FlipOpacity: AnimatableModifier {
+                                                     var percentage: CGFloat = 0
+                                                     
+                                                     var animatableData: CGFloat {
+                                                        get { percentage }
+                                                        set { percentage = newValue }
+                                                     }
+                                                     
+                                                     func body(content: Content) -> some View {
+                                                        content
+                                                             .opacity(Double(percentage.rounded()))
+                                                     }
+                                                  }
+    
+    private func sliderEditingChanged(editingStarted: Bool) {
+        if editingStarted {
+            ap.timeObserverActive = false;
+        }
+        else {
+            ap.skip(to: ap.currentTime)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                ap.timeObserverActive = true;
+            }
+        }
+    }
+                                                  }
 
 struct ExpandedBottomSheet_Previews: PreviewProvider {
     static var previews: some View {
@@ -246,3 +277,6 @@ struct ExpandedBottomSheet_Previews: PreviewProvider {
             .preferredColorScheme(.dark)
     }
 }
+
+
+

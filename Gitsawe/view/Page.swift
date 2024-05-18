@@ -30,7 +30,7 @@ struct Page: View {
         helper.model.forEach { model in
             var track = AudioTrack();
             track.image = "eotc-celebration"; // Image name from asset
-            track.title = "ምስባክ"
+            track.title = model.title
             track.subtitle = "ዘ\(Formatter.ethFullDay.string(from: date))"
             track.url = Bundle.main.url(forResource: model.audio, withExtension: "m4a");
             playlist.append(track);
@@ -209,9 +209,9 @@ struct Row: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.vertical,7)
-        .padding(.horizontal, 7)
+        .padding(.horizontal, 10)
         .background(Material.ultraThin)
-        .cornerRadius(10.0)
+        .cornerRadius(25.0)
         .clipped()
     }
     

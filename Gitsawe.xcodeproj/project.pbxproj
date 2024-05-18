@@ -35,12 +35,14 @@
 		F36F4CB92B3E6C48004976FB /* ወእንዘ ሰሙን.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CB72B3E6C48004976FB /* ወእንዘ ሰሙን.m4a */; };
 		F36F4CCF2B40EE98004976FB /* pagumen_1.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CCC2B40EE98004976FB /* pagumen_1.json */; };
 		F36F4CD02B40EE98004976FB /* tahsas_21.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CCD2B40EE98004976FB /* tahsas_21.json */; };
-		F36F4CD12B40EE98004976FB /* genbot_8.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CCE2B40EE98004976FB /* genbot_8.json */; };
+		F36F4CD12B40EE98004976FB /* genbot_10.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CCE2B40EE98004976FB /* genbot_10.json */; };
 		F36F4CD42B40F1C2004976FB /* mezmur_ኖላዊ.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CD22B40F1C2004976FB /* mezmur_ኖላዊ.json */; };
 		F36F4CD52B40F1C2004976FB /* mezmur_ብርሃን.json in Resources */ = {isa = PBXBuildFile; fileRef = F36F4CD32B40F1C2004976FB /* mezmur_ብርሃን.json */; };
 		F378F3EB2B746F250098EF41 /* Payer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378F3EA2B746F250098EF41 /* Payer.swift */; };
 		F3E0571D2BF6D462006C6C8E /* LargePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0571C2BF6D462006C6C8E /* LargePlayerView.swift */; };
 		F3E0571F2BF70683006C6C8E /* genbot_9.json in Resources */ = {isa = PBXBuildFile; fileRef = F3E0571E2BF70683006C6C8E /* genbot_9.json */; };
+		F3FFA55F2BF8B7A200981F0F /* MusicProgressSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FFA55E2BF8B7A200981F0F /* MusicProgressSlider.swift */; };
+		F3FFA5612BF8BD2900981F0F /* AirPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FFA5602BF8BD2900981F0F /* AirPlayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,12 +76,14 @@
 		F36F4CB72B3E6C48004976FB /* ወእንዘ ሰሙን.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ወእንዘ ሰሙን.m4a"; sourceTree = "<group>"; };
 		F36F4CCC2B40EE98004976FB /* pagumen_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pagumen_1.json; sourceTree = "<group>"; };
 		F36F4CCD2B40EE98004976FB /* tahsas_21.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tahsas_21.json; sourceTree = "<group>"; };
-		F36F4CCE2B40EE98004976FB /* genbot_8.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = genbot_8.json; sourceTree = "<group>"; };
+		F36F4CCE2B40EE98004976FB /* genbot_10.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = genbot_10.json; sourceTree = "<group>"; };
 		F36F4CD22B40F1C2004976FB /* mezmur_ኖላዊ.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mezmur_ኖላዊ.json"; sourceTree = "<group>"; };
 		F36F4CD32B40F1C2004976FB /* mezmur_ብርሃን.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mezmur_ብርሃን.json"; sourceTree = "<group>"; };
 		F378F3EA2B746F250098EF41 /* Payer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payer.swift; sourceTree = "<group>"; };
 		F3E0571C2BF6D462006C6C8E /* LargePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargePlayerView.swift; sourceTree = "<group>"; };
 		F3E0571E2BF70683006C6C8E /* genbot_9.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = genbot_9.json; sourceTree = "<group>"; };
+		F3FFA55E2BF8B7A200981F0F /* MusicProgressSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicProgressSlider.swift; sourceTree = "<group>"; };
+		F3FFA5602BF8BD2900981F0F /* AirPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +156,10 @@
 				F36F4C8D2B3D4512004976FB /* Misbak.swift */,
 				F36F4C922B3D6F37004976FB /* Page.swift */,
 				F36F4CB42B3E68A1004976FB /* WrappingHStack.swift */,
+				F3E0571C2BF6D462006C6C8E /* LargePlayerView.swift */,
+				F3FFA55E2BF8B7A200981F0F /* MusicProgressSlider.swift */,
 				F378F3EA2B746F250098EF41 /* Payer.swift */,
+				F3FFA5602BF8BD2900981F0F /* AirPlayView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -181,7 +188,6 @@
 				F36F4C9E2B3E1223004976FB /* Controller */,
 				F36F4CA22B3E1223004976FB /* AudioHandler.swift */,
 				F36F4CA32B3E1223004976FB /* Player */,
-				F3E0571C2BF6D462006C6C8E /* LargePlayerView.swift */,
 			);
 			path = MediaPlayer;
 			sourceTree = "<group>";
@@ -215,7 +221,7 @@
 				F36F4CD22B40F1C2004976FB /* mezmur_ኖላዊ.json */,
 				F36F4CCC2B40EE98004976FB /* pagumen_1.json */,
 				F310B12E2B55292100682D52 /* ter_1.json */,
-				F36F4CCE2B40EE98004976FB /* genbot_8.json */,
+				F36F4CCE2B40EE98004976FB /* genbot_10.json */,
 				F36F4CCD2B40EE98004976FB /* tahsas_21.json */,
 			);
 			path = json;
@@ -300,7 +306,7 @@
 				F36F4C762B3D2EE2004976FB /* Assets.xcassets in Resources */,
 				F36F4CCF2B40EE98004976FB /* pagumen_1.json in Resources */,
 				F36F4CD42B40F1C2004976FB /* mezmur_ኖላዊ.json in Resources */,
-				F36F4CD12B40EE98004976FB /* genbot_8.json in Resources */,
+				F36F4CD12B40EE98004976FB /* genbot_10.json in Resources */,
 				F36F4CB92B3E6C48004976FB /* ወእንዘ ሰሙን.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,9 +319,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F36F4CA82B3E1223004976FB /* NowPlayingCenter.swift in Sources */,
+				F3FFA55F2BF8B7A200981F0F /* MusicProgressSlider.swift in Sources */,
 				F36F4C742B3D2EDF004976FB /* ContentView.swift in Sources */,
 				F36F4CAF2B3E1223004976FB /* SampleBufferItem.swift in Sources */,
 				F36F4CAE2B3E1223004976FB /* SampleBufferPlayer.swift in Sources */,
+				F3FFA5612BF8BD2900981F0F /* AirPlayView.swift in Sources */,
 				F36F4C812B3D2F1C004976FB /* Gitsawe.xcdatamodeld in Sources */,
 				F36F4C932B3D6F37004976FB /* Page.swift in Sources */,
 				F36F4C8A2B3D3D48004976FB /* Helper.swift in Sources */,
@@ -473,8 +481,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -503,8 +511,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -24,6 +24,7 @@ struct Letter: View {
             
             Text(letter)
                 .font(Font.custom("AbyssinicaSIL-Regular", size: 25) )
+                .minimumScaleFactor(0.8)
         }
     }
 }

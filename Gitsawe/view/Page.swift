@@ -82,37 +82,38 @@ struct Accordion: View {
     @State var isExpanded: Bool = true;
     
     var body: some View {
+        
         DisclosureGroup(isExpanded: $isExpanded) {
             
             Misbak(misbak: model.misbak)
                 .padding(.bottom)
             
             VStack(spacing: 10){
-                HStack(spacing: 10){
+                //HStack(spacing: 10){
                     
                     if(model.paul != nil){
-                        Row(title: "ዲ.ን.", value: model.paul!)
+                        Row(title: "ሠራዒ ዲ.ን.", value: model.paul!)
                     }
                     
                     if(model.meliekt != nil){
-                        Row(title: "ንፍቅ \nዲ.ን.", value: model.meliekt!)
+                        Row(title: "ንፍቅ ዲ.ን.", value: model.meliekt!)
                     }
-                }
+                //}
                 
-                HStack(spacing: 10){
+                //HStack(spacing: 10){
                     if(model.gh != nil){
-                        Row(title: "ንፍቅ \nካህን", value: model.gh!)
+                        Row(title: "ንፍቅ ካህን", value: model.gh!)
                     }
                     
                     Row(title: "ወንጌል", value: model.wengel!, nobreak: model.paul == nil)
-                }
+                //}
                 
-                HStack(spacing: 10){
+                //HStack(spacing: 10){
                     if(model.kidase != nil){
                         Row(title: "ቅዳሴ", value: model.kidase!)
                             .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
                     }
-                }
+                //}
             }
             
             Spacer(minLength: 60)
@@ -134,10 +135,39 @@ struct Accordion: View {
         }
         .underline(false)
     }
+    .disclosureGroupStyle(AccordionStyle())
     .padding(.horizontal)
+    .padding(.vertical)
     }
 }
 
+
+struct AccordionStyle: DisclosureGroupStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        VStack(alignment: .leading) {
+            
+            Button(action: {
+                withAnimation{
+                    configuration.isExpanded.toggle()
+                }
+            }, label: {
+                HStack {
+                    configuration.label
+                    Spacer()
+                    Image(systemName: configuration.isExpanded ? "chevron.down" :"chevron.right")
+                }
+                .frame(maxWidth: .infinity)
+                .contentShape(Rectangle())
+            })
+            .buttonStyle(.plain)
+
+            if configuration.isExpanded {
+                configuration.content
+                    .padding(.leading, 5)
+            }
+        }
+    }
+}
 
 struct Row: View {
     
@@ -150,26 +180,36 @@ struct Row: View {
         self.nobreak = nobreak
         self.value = value
         
-        if(self.nobreak == true){
+        
+        if(self.nobreak == true || true){
+            self.title = self.title.replacingOccurrences(of: "\n", with: "")
             self.value = self.value.replacingOccurrences(of: "\n", with: "")
         }
     }
     
     var body: some View {
-        HStack(spacing: 5){
-            Text(title)
-                .foregroundStyle(.secondary)
-                .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
+        HStack(spacing: 15){
             
-            Text(value)
-                .minimumScaleFactor(0.4)
-                .multilineTextAlignment(.center)
-                .foregroundStyle(.primary.opacity(0.8))
-                .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
+            LazyVGrid(columns: [GridItem(.fixed(90), alignment: .leading), GridItem(.flexible(), alignment: .leading)], content: {
+                
+                Text(title)
+                    .foregroundStyle(.secondary)
+                    .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
+                
+                
+                Text(value)
+                    .minimumScaleFactor(0.4)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.primary.opacity(0.8))
+                    .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
+            })
+            
+            //Spacer()
+            
         }
-        .frame(maxWidth: .infinity, alignment: .center)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.vertical,7)
-        .padding(.horizontal,7)
+        .padding(.horizontal, 7)
         .background(Material.ultraThin)
         .cornerRadius(10.0)
         .clipped()

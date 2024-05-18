@@ -57,7 +57,6 @@ struct ContentView: View {
                         
                         nextButton
                     }
-                    .background(Color(.secondarySystemBackground))
                     
                     Divider()
                     
@@ -75,11 +74,12 @@ struct ContentView: View {
         }
         .safeAreaInset(edge: .bottom) {
             CustomBottomSheet()
+                .environmentObject(handler)
         }
         .overlay {
             if expandSheet {
                 ExpandedBottomSheet(expandSheet: $expandSheet, animation: animation)
-                /// Transition for more fluent Animation
+                    .environmentObject(handler)
                     .transition(.asymmetric(insertion: .identity, removal: .offset(y: -5)))
             }
         }
@@ -87,6 +87,7 @@ struct ContentView: View {
         .edgesIgnoringSafeArea(.all)
         .background(Color(.systemBackground))
         .animation(.easeOut, value: showPlayer)
+        .animation(.easeOut, value: expandSheet)
     }
     
     var prevButton: some View {
@@ -160,6 +161,8 @@ struct ContentView: View {
 /// Resuable File
 struct MusicInfo: View {
     @Binding var expandSheet: Bool
+    @EnvironmentObject var ap: AudioHandler;
+    
     var animation: Namespace.ID
     var body: some View {
         HStack(spacing: 0) {
@@ -180,7 +183,7 @@ struct MusicInfo: View {
             }
             .frame(width: 45, height: 45)
             
-            Text("Look What You Made Me do")
+            Text(ap.currentTrack?.title ?? "-")
                 .fontWeight(.semibold)
                 .lineLimit(1)
                 .padding(.horizontal, 15)
@@ -188,17 +191,17 @@ struct MusicInfo: View {
             Spacer(minLength: 0)
             
             Button {
-                
+                ap.togglePlayPause()
             } label: {
-                Image(systemName: "pause.fill")
+                Image(systemName: ap.state == .playing ? "pause.fill": "play.fill")
                     .font(.title2)
             }
             .buttonStyle(.plain)
             
             Button {
-                
+                ap.skip(by: 15)
             } label: {
-                Image(systemName: "forward.fill")
+                Image(systemName: "goforward.15")
                     .font(.title2)
             }
             .padding(.leading, 25)

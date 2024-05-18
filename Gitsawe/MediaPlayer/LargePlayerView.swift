@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ExpandedBottomSheet: View {
+    @EnvironmentObject var ap: AudioHandler;
     @Binding var expandSheet: Bool
     var animation: Namespace.ID
     /// View Properties
@@ -118,7 +119,7 @@ struct ExpandedBottomSheet: View {
                 VStack(spacing: spacing) {
                     HStack(alignment: .center, spacing: 15) {
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("Look What You Made Me do")
+                            Text(ap.currentTrack?.title ?? "-")
                                 .font(.title3)
                                 .fontWeight(.semibold)
                                 .foregroundColor(.white)
@@ -167,9 +168,9 @@ struct ExpandedBottomSheet: View {
                     /// Playback Controls
                     HStack(spacing: size.width * 0.18) {
                         Button {
-                            
+                            ap.skip(by: 15)
                         } label: {
-                            Image(systemName: "backward.fill")
+                            Image(systemName: "gobackward.15")
                             /// Dynamic Sizing for Smaller to Larger iPhones
                                 .font(size.height < 300 ? .title3 : .title)
                         }
@@ -177,18 +178,18 @@ struct ExpandedBottomSheet: View {
                         
                         /// Making Play/Pause Little Bigger
                         Button {
-                            
+                            ap.togglePlayPause()
                         } label: {
-                            Image(systemName: "pause.fill")
+                            Image(systemName: ap.state == .playing ? "pause.fill": "play.fill")
                             /// Dynamic Sizing for Smaller to Larger iPhones
                                 .font(size.height < 300 ? .largeTitle : .system(size: 50))
                         }
                         .buttonStyle(.plain)
                         
                         Button {
-                            
+                            ap.skip(by: 15)
                         } label: {
-                            Image(systemName: "forward.fill")
+                            Image(systemName: "goforward.15")
                             /// Dynamic Sizing for Smaller to Larger iPhones
                                 .font(size.height < 300 ? .title3 : .title)
                         }

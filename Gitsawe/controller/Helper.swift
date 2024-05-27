@@ -6,6 +6,34 @@
 //
 
 import Foundation
+import SwiftUI
+
+extension BinaryFloatingPoint {
+    func asTimeString(style: DateComponentsFormatter.UnitsStyle) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.minute, .second]
+        formatter.unitsStyle = style
+        formatter.zeroFormattingBehavior = .pad
+        return formatter.string(from: TimeInterval(self)) ?? "" //formatter.string(from: self) ?? ""
+    }
+}
+
+/// Returns the current Device Corner Radius
+extension View {
+    var deviceCornerRadius: CGFloat {
+        let key = "_displayCornerRadius"
+        if let screen = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.screen {
+            if let cornerRadius = screen.value(forKey: key) as? CGFloat {
+                return cornerRadius
+            }
+            
+            return 0
+        }
+        
+        return 0
+    }
+}
+
 
 /*
  usage enum Direction: CaseIterable {
@@ -39,6 +67,14 @@ extension Formatter {
         formatter.calendar = Calendar.init(identifier: Calendar.Identifier.ethiopicAmeteMihret)
         formatter.locale = Locale(identifier: "amh")
         formatter.dateFormat = "MMMM dd, yyyy"
+        return formatter
+    }()
+    
+    static let ethDDYYY: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar.init(identifier: Calendar.Identifier.ethiopicAmeteMihret)
+        formatter.locale = Locale(identifier: "amh")
+        formatter.dateFormat = "dd, yyyy"
         return formatter
     }()
     

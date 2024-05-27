@@ -23,7 +23,8 @@ struct Letter: View {
                 .frame(height: 9)
             
             Text(letter)
-                .font(Font.custom("AbyssinicaSIL-Regular", size: 23) )
+                .font(Font.custom("AbyssinicaSIL-Regular", size: 25) )
+                .minimumScaleFactor(0.8)
         }
     }
 }

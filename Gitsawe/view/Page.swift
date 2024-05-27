@@ -30,7 +30,7 @@ struct Page: View {
         helper.model.forEach { model in
             var track = AudioTrack();
             track.image = "eotc-celebration"; // Image name from asset
-            track.title = "ምስባክ"
+            track.title = model.title
             track.subtitle = "ዘ\(Formatter.ethFullDay.string(from: date))"
             track.url = Bundle.main.url(forResource: model.audio, withExtension: "m4a");
             playlist.append(track);
@@ -45,55 +45,8 @@ struct Page: View {
         VStack(alignment: .leading, spacing: 0){
             
             ForEach(helper.model, id: \.self){model in
-                
-                HStack{
-                    Text(model.title)
-                        .font(Font.custom("AbyssinicaSIL-Regular", size: 23) )
-                        .foregroundStyle(.secondary)
-                    
-                    Spacer()
-                    
-                    Text(model.psalm!)
-                        .font(.subheadline)
-                }
-                .padding(.horizontal)
-                .padding(.bottom)
-
-                
-                Misbak(misbak: model.misbak)
-                    .padding(.horizontal)
-                
-                if(model.paul != nil){
-                    Row(title: "ዲ.ን.", value: model.paul!)
-                        .background(Color(.secondarySystemBackground).opacity(0.7))
-                        .font(.subheadline)
-                }
-                
-                if(model.meliekt != nil){
-                    Row(title: "ንፍቅ ዲ.ን.", value: model.meliekt!)
-                        .font(.subheadline)
-                }
-                    
-                if(model.gh != nil){
-                    Row(title: "ንፍቅ ካህን", value: model.gh!)
-                        .background(Color(.secondarySystemBackground).opacity(0.7))
-                        .font(.subheadline)
-                }
-                        
-                Row(title: "ወንጌል", value: model.wengel!)
-                    .font(.subheadline)
-                    .background(model.gh == nil ? Color(.secondarySystemBackground).opacity(0.7) : Color(.systemBackground))
-                        
-                if(model.kidase != nil){
-                    Row(title: "ቅዳሴ", value: model.kidase!)
-                        .background(Color(.secondarySystemBackground).opacity(0.7))
-                        .font(.subheadline)
-                }
-                
-                Spacer(minLength: 50)
+                Accordion(model: model)
             }
-            
-            
             
             if(helper.model.count == 0){
                 Text("Missing or Incorrect \(helper.id).json")
@@ -111,6 +64,7 @@ struct Page: View {
             }
             
             Spacer()
+                .frame(minHeight: 75)
         }
         .padding(.vertical)
     }
@@ -122,22 +76,144 @@ struct Page: View {
 }
 
 
+struct Accordion: View {
+    
+    var model: GitsaweModel;
+    @State var isExpanded: Bool = true;
+    
+    var body: some View {
+        
+        DisclosureGroup(isExpanded: $isExpanded) {
+            
+            Misbak(misbak: model.misbak)
+                .padding(.bottom)
+            
+            VStack(spacing: 7){
+                //HStack(spacing: 10){
+                    
+                    if(model.paul != nil){
+                        Row(title: "ሠራዒ ዲ.ን.", value: model.paul!)
+                    }
+                    
+                    if(model.meliekt != nil){
+                        Row(title: "ንፍቅ ዲ.ን.", value: model.meliekt!)
+                    }
+                //}
+                
+                //HStack(spacing: 10){
+                    if(model.gh != nil){
+                        Row(title: "ንፍቅ ካህን", value: model.gh!)
+                    }
+                    
+                    Row(title: "ወንጌል", value: model.wengel!, nobreak: model.paul == nil)
+                //}
+                
+                //HStack(spacing: 10){
+                    if(model.kidase != nil){
+                        Row(title: "ቅዳሴ", value: model.kidase!)
+                            .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
+                    }
+                //}
+            }
+            
+            Spacer(minLength: 40)
+        }
+    label: {
+        HStack{
+//            RoundedRectangle(cornerRadius: 10.0)
+//                .fill(.green)
+//                .frame(width: 5)
+            
+            VStack(alignment: .leading){
+                Text(model.title)
+                    .font(Font.custom("AbyssinicaSIL-Regular", size: 23) )
+                
+                Text(model.psalm!)
+                    .font(.caption)
+            }
+            .foregroundColor(.primary.opacity(0.8))
+        }
+        .underline(false)
+    }
+    .disclosureGroupStyle(AccordionStyle())
+    .padding(.horizontal)
+    .padding(.bottom)
+    }
+}
+
+
+struct AccordionStyle: DisclosureGroupStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        VStack(alignment: .leading) {
+            
+            Button(action: {
+                withAnimation{
+                    //configuration.isExpanded.toggle()
+                }
+            }, label: {
+                HStack {
+                    configuration.label
+                    Spacer()
+                    // Image(systemName: configuration.isExpanded ? "chevron.down" :"chevron.right")
+                    Image(systemName:"play")
+                }
+                .frame(maxWidth: .infinity)
+                .contentShape(Rectangle())
+            })
+            .buttonStyle(.plain)
+
+            if configuration.isExpanded {
+                configuration.content
+                    // .padding(.leading, 5)
+            }
+        }
+    }
+}
+
 struct Row: View {
     
     var title: String;
     var value: String;
+    var nobreak: Bool?;
+    
+    init(title: String, value: String, nobreak: Bool? = nil) {
+        self.title = title
+        self.nobreak = nobreak
+        self.value = value
+        
+        
+        if(self.nobreak == true || true){
+            self.title = self.title.replacingOccurrences(of: "\n", with: "")
+            self.value = self.value.replacingOccurrences(of: "\n", with: "")
+        }
+    }
     
     var body: some View {
-        HStack{
-            Text(title)
-                //.font(.subheadline)
-                .foregroundStyle(.secondary)
+        HStack(spacing: 15){
             
-            Text(value)
-                //.font(.subheadline)
+            LazyVGrid(columns: [GridItem(.fixed(90), alignment: .leading), GridItem(.flexible(), alignment: .leading)], content: {
+                
+                Text(title)
+                    .foregroundStyle(.secondary)
+                    .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
+                
+                
+                Text(value)
+                    .minimumScaleFactor(0.4)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.primary.opacity(0.8))
+                    .font(Font.custom("AbyssinicaSIL-Regular", size: 18) )
+            })
+            
+            //Spacer()
+            
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
+        .padding(.vertical)
+        .padding(.horizontal)
+        .background(Material.ultraThin)
+        .cornerRadius(5.0)
+        .clipped()
     }
     
 }

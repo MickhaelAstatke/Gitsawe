@@ -88,7 +88,7 @@ struct Accordion: View {
             Misbak(misbak: model.misbak)
                 .padding(.bottom)
             
-            VStack(spacing: 10){
+            VStack(spacing: 7){
                 //HStack(spacing: 10){
                     
                     if(model.paul != nil){
@@ -116,13 +116,13 @@ struct Accordion: View {
                 //}
             }
             
-            Spacer(minLength: 60)
+            Spacer(minLength: 40)
         }
     label: {
         HStack{
-            RoundedRectangle(cornerRadius: 10.0)
-                .fill(.green)
-                .frame(width: 5)
+//            RoundedRectangle(cornerRadius: 10.0)
+//                .fill(.green)
+//                .frame(width: 5)
             
             VStack(alignment: .leading){
                 Text(model.title)
@@ -137,7 +137,7 @@ struct Accordion: View {
     }
     .disclosureGroupStyle(AccordionStyle())
     .padding(.horizontal)
-    .padding(.vertical)
+    .padding(.bottom)
     }
 }
 
@@ -148,13 +148,14 @@ struct AccordionStyle: DisclosureGroupStyle {
             
             Button(action: {
                 withAnimation{
-                    configuration.isExpanded.toggle()
+                    //configuration.isExpanded.toggle()
                 }
             }, label: {
                 HStack {
                     configuration.label
                     Spacer()
-                    Image(systemName: configuration.isExpanded ? "chevron.down" :"chevron.right")
+                    // Image(systemName: configuration.isExpanded ? "chevron.down" :"chevron.right")
+                    Image(systemName:"play")
                 }
                 .frame(maxWidth: .infinity)
                 .contentShape(Rectangle())
@@ -163,7 +164,7 @@ struct AccordionStyle: DisclosureGroupStyle {
 
             if configuration.isExpanded {
                 configuration.content
-                    .padding(.leading, 5)
+                    // .padding(.leading, 5)
             }
         }
     }
@@ -208,10 +209,10 @@ struct Row: View {
             
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.vertical,7)
-        .padding(.horizontal, 10)
+        .padding(.vertical)
+        .padding(.horizontal)
         .background(Material.ultraThin)
-        .cornerRadius(25.0)
+        .cornerRadius(5.0)
         .clipped()
     }
     

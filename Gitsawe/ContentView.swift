@@ -21,60 +21,74 @@ struct ContentView: View {
     @StateObject var handler: AudioHandler = AudioHandler()
     
     @State private var expandSheet: Bool = false
+    @State private var showSidebar: Bool = false
     @Namespace private var animation
     
     var body: some View {
         VStack {
-            PagedInfiniteScrollView(content: { index in
-                VStack(spacing: 0){
-                    HStack(alignment:.center){
-                        
-                        prevButton
-                        
-                        Spacer()
-                        
-                        HStack{
-                            HStack(spacing: 0){
-                                Text(LocalizedStringKey(Formatter.ethFullDay.string(from: currentPage)))
-                                    .minimumScaleFactor(0.5)
-                            }
-                            
-                            Image(systemName: "calendar")
-                                .foregroundColor(.accentColor)
-                        }
-                          .overlay {
-                            DatePicker(
-                              selection: $currentPage,
-                              displayedComponents: .date
-                            ){}
-                                  .environment(\.calendar, Calendar.init(identifier: Calendar.Identifier.ethiopicAmeteMihret ))
-                                  .datePickerStyle( CompactDatePickerStyle() )
-                                  .environment(\.locale, Locale.init(identifier: "amh"))
-                                  .opacity(0.011) // Minimum that still allows this to be tappable
-                          }
-                        
-                        Spacer()
-                        
-                        nextButton
+            HStack(alignment:.center){
+                Button {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        showSidebar = true
                     }
-                    
-                    Divider()
-                    
-                    ScrollView{
-                        Page(date: index, audioPlayer: handler)
-                            .ignoresSafeArea()
-                            .environmentObject(handler)
-                            .padding(.top)
-                    }
+                } label: {
+                    Image(systemName: "line.3.horizontal")
+                        .font(.title.bold())
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color(.systemBackground))
-            }, currentPage: $currentPage)
+                .buttonStyle(.plain)
+                
+                
+                
+                Text("ግጻዌ")
+                    .minimumScaleFactor(0.8)
+                    .font(Font.custom("AbyssinicaSIL-Regular", size: 28) )
+                
+                Spacer()
+                
+                HStack(spacing: 7){
+                    Text(Formatter.ethMonth.string(from: currentPage))
+                        .minimumScaleFactor(0.8)
+                        .font(Font.custom("AbyssinicaSIL-Regular", size: 23) )
+                    
+                    Text(Formatter.ethDDYYY.string(from: currentPage))
+                        .minimumScaleFactor(0.8)
+                        .font(.system(size: 21).bold())
+                    
+                    Image(systemName: "chevron.down")
+                        .foregroundColor(.accentColor)
+                        .font(.system(size: 21).bold())
+                }
+                .foregroundColor(.accentColor)
+                .overlay {
+                    DatePicker(
+                        selection: $currentPage,
+                        displayedComponents: .date
+                    ){}
+                        .environment(\.calendar, Calendar.init(identifier: Calendar.Identifier.ethiopicAmeteMihret ))
+                        .datePickerStyle( CompactDatePickerStyle() )
+                        .environment(\.locale, Locale.init(identifier: "amh"))
+                        .opacity(0.011) // Minimum that still allows this to be tappable
+                }
+            }
+            .padding(.horizontal)
+            .padding(.vertical, 7)
             
+            Divider()
+            
+            PagedInfiniteScrollView(content: { index in
+                ScrollView{
+                    Page(date: index, audioPlayer: handler)
+                        .ignoresSafeArea()
+                        .environmentObject(handler)
+                        .padding(.vertical, 5)
+                }
+            }, currentPage: $currentPage)
         }
         .safeAreaInset(edge: .bottom) {
             CustomBottomSheet()
                 .environmentObject(handler)
+                .background(.green.opacity(0.2))
+                .ignoresSafeArea()
         }
         .overlay {
             if expandSheet {
@@ -83,33 +97,19 @@ struct ContentView: View {
                     .transition(.asymmetric(insertion: .identity, removal: .offset(y: -5)))
             }
         }
-        .ignoresSafeArea()
-        .edgesIgnoringSafeArea(.all)
+        .overlay {
+//            if showSidebar {
+                Sidebar(isSideBarOpened: $showSidebar)
+                    .environmentObject(handler)
+                    //.transition(.asymmetric(insertion: .identity, removal: .offset(y: -5)))
+//            }
+        }
+    
+        .edgesIgnoringSafeArea(.bottom)
         .background(Color(.systemBackground))
         .animation(.easeOut, value: showPlayer)
         .animation(.easeOut, value: expandSheet)
-    }
-    
-    var prevButton: some View {
-        Button(action: {
-            currentPage = Calendar.current.date(byAdding: .day, value: -1, to: currentPage)!
-        }) {
-            Image(systemName: "chevron.left")
-                .padding()
-                .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
-    }
-    
-    var nextButton: some View{
-        Button(action: {
-            currentPage = Calendar.current.date(byAdding: .day, value: 1, to: currentPage)!
-        }) {
-            Image(systemName: "chevron.right")
-                .padding()
-                .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
+        .animation(.easeOut, value: showSidebar)
     }
     
     
@@ -117,7 +117,7 @@ struct ContentView: View {
     @ViewBuilder
     func CustomBottomSheet() -> some View {
         /// Animating Sheet Background (To Look Like It's Expanding From the Bottom)
-        ZStack {
+        ZStack(alignment:.topLeading) {
             if expandSheet {
                 Rectangle()
                     .fill(.clear)
@@ -141,11 +141,6 @@ struct ContentView: View {
         /// 49: Default Tab Bar Height
     //    .offset(y: -49)
     }
-
-
-
-    
-    
 }
 
 #Preview {

@@ -15,10 +15,16 @@ struct Misbak: View {
         VStack(spacing: 5){
             ForEach(misbak, id: \.self){line in
                 WrappingHStack(horizontalSpacing: 0){
-                    ForEach(line, id: \.self){l in
-                        Letter(letter: l.t, sign: l.s, sign2: l.s2)
-                    }
+//                    HStack(spacing: 0){
+                        ForEach(line, id: \.self){l in
+                            Letter(letter: l.t, sign: l.s, sign2: l.s2)
+                                //.fixedSize()
+                        }
+//                    }
+//                    .fixedSize()
+//                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                
             }
         }
     }

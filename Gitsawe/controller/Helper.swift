@@ -70,6 +70,14 @@ extension Formatter {
         return formatter
     }()
     
+    static let ethDDYYY: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar.init(identifier: Calendar.Identifier.ethiopicAmeteMihret)
+        formatter.locale = Locale(identifier: "amh")
+        formatter.dateFormat = "dd, yyyy"
+        return formatter
+    }()
+    
     
     static let ethMonth: DateFormatter = {
         let formatter = DateFormatter()

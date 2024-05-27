@@ -40,12 +40,12 @@ struct Sidebar: View {
 
                 VStack(alignment: .leading, spacing: 20) {
                     userProfile
+                    
                     Divider()
                         .background(Color.green.opacity(0.5))
                     
                     VStack(alignment: .leading, spacing: 5) {
                         navigationLink(icon: "book.closed", text: "መቅድም", content: ContentView())
-                        
                         
                         menuLink(icon: "doc.text", text: "ምስባክ", isSideBarOpened: $isSideBarOpened )
                         menuLink(icon: "books.vertical.fill", text: "መዝሙር", isSideBarOpened: $isSideBarOpened )
@@ -98,6 +98,9 @@ struct Sidebar: View {
                     .clipShape(Circle())
                     .frame(width: 60, height: 60, alignment: .center)
                     .padding(.trailing, 10)
+                    //.colorInvert()
+                    .blendMode( .difference ) // .exclusion / .difference / .sourceAtop
+                
                 
                 VStack(alignment: .leading, spacing: 0) {
                     Text("ግጻዌ")

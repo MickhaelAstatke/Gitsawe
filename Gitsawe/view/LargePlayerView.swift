@@ -51,7 +51,7 @@ struct ExpandedBottomSheet: View {
                         /// Mathing with Slide Animation
                         .offset(y: animateContent ? 0 : size.height)
                         .clipped()
-                        .padding(.top, size.height * 0.05)
+//                        .padding(.top, size.height * 0.05)
                     
                     /// Artwork Hero View
                     GeometryReader {

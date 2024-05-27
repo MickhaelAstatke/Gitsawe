@@ -25,7 +25,7 @@ struct ContentView: View {
     @Namespace private var animation
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             HStack(alignment:.center){
                 Button {
                     withAnimation(.easeInOut(duration: 0.3)) {
@@ -36,8 +36,6 @@ struct ContentView: View {
                         .font(.title.bold())
                 }
                 .buttonStyle(.plain)
-                
-                
                 
                 Text("ግጻዌ")
                     .minimumScaleFactor(0.8)
@@ -52,11 +50,12 @@ struct ContentView: View {
                     
                     Text(Formatter.ethDDYYY.string(from: currentPage))
                         .minimumScaleFactor(0.8)
-                        .font(.system(size: 21).bold())
+                        .font(.system(size: 20).bold())
                     
                     Image(systemName: "chevron.down")
                         .foregroundColor(.accentColor)
-                        .font(.system(size: 21).bold())
+                        .minimumScaleFactor(0.8)
+                        .font(.system(size: 20))//.bold())
                 }
                 .foregroundColor(.accentColor)
                 .overlay {
@@ -84,7 +83,7 @@ struct ContentView: View {
                 }
             }, currentPage: $currentPage)
         }
-        .safeAreaInset(edge: .bottom) {
+        .safeAreaInset(edge: .bottom, spacing: 0) {
             CustomBottomSheet()
                 .environmentObject(handler)
                 .background(.green.opacity(0.2))
@@ -98,11 +97,9 @@ struct ContentView: View {
             }
         }
         .overlay {
-//            if showSidebar {
-                Sidebar(isSideBarOpened: $showSidebar)
-                    .environmentObject(handler)
-                    //.transition(.asymmetric(insertion: .identity, removal: .offset(y: -5)))
-//            }
+            Sidebar(isSideBarOpened: $showSidebar)
+                .environmentObject(handler)
+                //.transition(.asymmetric(insertion: .identity, removal: .offset(y: -5)))
         }
     
         .edgesIgnoringSafeArea(.bottom)

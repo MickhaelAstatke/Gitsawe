@@ -1,0 +1,6 @@
+xcuserdata/
+*.xcuserdatad/
+*.xcscmblueprint
+*.xccheckout
+*.xcworkspace/xcuserdata/
+DerivedData/

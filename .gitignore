@@ -4,3 +4,9 @@ xcuserdata/
 *.xccheckout
 *.xcworkspace/xcuserdata/
 DerivedData/
+xcuserdata/
+*.xcuserdatad/
+*.xcscmblueprint
+*.xccheckout
+*.xcworkspace/xcuserdata/
+DerivedData/
